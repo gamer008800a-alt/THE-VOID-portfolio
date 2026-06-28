@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinguaHub - Language Academy | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8f5ff;
+            color: #1e1a2e;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (Modern - Different Layout) ---------- */
+        header {
+            background: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo .icon-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+        }
+        .logo span {
+            color: #7c3aed;
+        }
+        .logo .void {
+            font-size: 10px;
+            color: #bbb;
+            font-weight: 400;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: -2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        nav a {
+            color: #555;
+            text-decoration: none;
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #f3edff;
+            color: #7c3aed;
+        }
+        nav a.active {
+            background: #7c3aed;
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #7c3aed;
+            color: #7c3aed;
+            padding: 10px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #7c3aed;
+            color: #fff;
+        }
+
+        /* ---------- HERO (Split Layout - Different) ---------- */
+        .hero {
+            padding: 60px 0 80px;
+            background: #ffffff;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text .badge {
+            background: #ede9fe;
+            color: #7c3aed;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.08;
+            margin-bottom: 16px;
+            color: #1e1a2e;
+        }
+        .hero-text h1 span {
+            color: #7c3aed;
+        }
+
+        .hero-text p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .hero-stats .stat {
+            text-align: left;
+        }
+        .hero-stats .stat .number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #7c3aed;
+        }
+        .hero-stats .stat .label {
+            font-size: 13px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #7c3aed;
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(124, 58, 237, 0.35);
+            background: #6d28d9;
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #ede9fe, #f5f0ff);
+            border-radius: 24px;
+            padding: 30px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.1);
+        }
+
+        /* ---------- LANGUAGE GRID (New Style) ---------- */
+        .languages {
+            padding: 80px 0;
+            background: #f8f5ff;
+        }
+
+        .languages .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .languages .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #1e1a2e;
+        }
+        .languages .section-header h2 span {
+            color: #7c3aed;
+        }
+        .languages .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .lang-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .lang-item {
+            background: #ffffff;
+            padding: 28px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.4s;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+        .lang-item:hover {
+            border-color: #7c3aed;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(124, 58, 237, 0.08);
+        }
+        .lang-item .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .lang-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e1a2e;
+        }
+        .lang-item .level {
+            font-size: 12px;
+            color: #aaa;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .lang-item .popular {
+            background: #7c3aed;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* ---------- FEATURES (Side-by-Side) ---------- */
+        .features {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .features .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .features .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #1e1a2e;
+        }
+        .features .section-header h2 span {
+            color: #7c3aed;
+        }
+        .features .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: #f8f5ff;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid #ede9fe;
+        }
+        .feature-item:hover {
+            transform: translateY(-6px);
+            border-color: #7c3aed;
+        }
+        .feature-item .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .feature-item h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e1a2e;
+        }
+        .feature-item p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        /* ---------- TESTIMONIAL (Different Style) ---------- */
+        .testimonial {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            padding: 60px 50px;
+            border-radius: 24px;
+            margin: 40px 0 60px;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-size: 26px;
+            font-style: italic;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto 16px;
+            line-height: 1.7;
+        }
+
+        .testimonial .author {
+            font-weight: 700;
+            color: #d8b4fe;
+            font-size: 18px;
+        }
+
+        /* ---------- CONTACT (New Layout) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #f8f5ff;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1e1a2e;
+        }
+        .contact-info h3 span {
+            color: #7c3aed;
+        }
+        .contact-info p {
+            color: #888;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #555;
+        }
+        .contact-info .detail .emoji {
+            font-size: 20px;
+        }
+
+        .contact-form input,
+        .contact-form select {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 2px solid #ede9fe;
+            border-radius: 12px;
+            background: #faf8ff;
+            color: #1e1a2e;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.05);
+        }
+
+        .contact-form select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: #7c3aed;
+            border: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 17px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background: #6d28d9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        #form-message {
+            margin-top: 16px;
+            color: #7c3aed;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #1e1a2e;
+            padding: 40px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+        footer .designer {
+            color: #a78bfa;
+            font-weight: 700;
+        }
+        footer .void-brand {
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .lang-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            .lang-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .testimonial blockquote {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+            .lang-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER (Different Layout) ========== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <span class="icon-logo">🌍</span>
+                <div>
+                    Lingua<span>Hub</span>
+                    <span class="void">✦ THE VOID</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Courses</a>
+                <a href="#">Teachers</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Free Trial</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO (Split Layout) ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">🌍 Speak Like a Native</div>
+                <h1>Learn Languages <span>Faster</span> & Smarter</h1>
+                <p>Master English, Spanish, French, and more with expert teachers and interactive lessons tailored to your level.</p>
+                <button class="btn-primary" onclick="showAlert()">Start Free Trial</button>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="number">12K+</div>
+                        <div class="label">Students</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">50+</div>
+                        <div class="label">Languages</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">4.9⭐</div>
+                        <div class="label">Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="linguahub.jpg" alt="LinguaHub Language Learning" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LANGUAGE GRID ========== -->
+    <section class="languages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your <span>Language</span></h2>
+                <p>From beginner to fluent — we've got you covered</p>
+            </div>
+            <div class="lang-grid">
+                <div class="lang-item">
+                    <span class="icon">🇬🇧</span>
+                    <h4>English</h4>
+                    <div class="level">All Levels</div>
+                    <span class="popular">Most Popular</span>
+                </div>
+                <div class="lang-item">
+                    <span class="icon">🇪🇸</span>
+                    <h4>Spanish</h4>
+                    <div class="level">A1 - C2</div>
+                </div>
+                <div class="lang-item">
+                    <span class="icon">🇫🇷</span>
+                    <h4>French</h4>
+                    <div class="level">Beginner +</div>
+                </div>
+                <div class="lang-item">
+                    <span class="icon">🇩🇪</span>
+                    <h4>German</h4>
+                    <div class="level">Intermediate</div>
+                </div>
+                <div class="lang-item">
+                    <span class="icon">🇮🇹</span>
+                    <h4>Italian</h4>
+                    <div class="level">Coming Soon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why <span>LinguaHub</span>?</h2>
+                <p>Learn smarter with our proven approach</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="icon">🎓</span>
+                    <h4>Expert Teachers</h4>
+                    <p>Learn from native speakers with years of teaching experience.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">💬</span>
+                    <h4>Real Conversations</h4>
+                    <p>Practice speaking with real people, not just apps.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">📱</span>
+                    <h4>Learn Anywhere</h4>
+                    <p>Access your lessons on any device.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🏆</span>
+                    <h4>Progress Tracking</h4>
+                    <p>Track your improvement step by step.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL (Purple Background) ========== -->
+    <div class="container">
+        <div class="testimonial">
+            <blockquote>
+                “I went from zero Spanish to conversational fluency in just 4 months. LinguaHub's method works!”
+            </blockquote>
+            <p class="author">— David K., Software Engineer</p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT (Two Column) ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Start Your <span>Journey</span> Today</h3>
+                    <p>Fill in the form and we'll match you with the perfect course and teacher.</p>
+                    <div class="detail">
+                        <span class="emoji">📧</span>
+                        hello@linguahub.com
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📞</span>
+                        +1 800 123 456
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📍</span>
+                        Online — Anywhere in the world
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <select id="language">
+                        <option value="">Select Language</option>
+                        <option value="English">English</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Italian">Italian</option>
+                    </select>
+                    <select id="level">
+                        <option value="">Select Level</option>
+                        <option value="Beginner">Beginner (A1)</option>
+                        <option value="Elementary">Elementary (A2)</option>
+                        <option value="Intermediate">Intermediate (B1)</option>
+                        <option value="Upper Intermediate">Upper Intermediate (B2)</option>
+                        <option value="Advanced">Advanced (C1)</option>
+                        <option value="Fluent">Fluent (C2)</option>
+                    </select>
+                    <button onclick="submitForm()">Get Started 🚀</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LinguaHub. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('🌍 Start your free trial at linguahub.com/trial');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const language = document.getElementById('language').value;
+            const level = document.getElementById('level').value;
+
+            if (!name || !email || !language || !level) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Welcome! We\'ll match you with the perfect course within 24 hours.';
+            document.getElementById('form-message').style.color = '#7c3aed';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('language').value = '';
+            document.getElementById('level').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Language:', language);
+            console.log('Level:', level);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TasteBud - Fine Dining | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #fefaf5;
+            color: #1e1a16;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (Modern - Same Style) ---------- */
+        header {
+            background: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo .icon-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+        }
+        .logo span {
+            color: #f97316;
+        }
+        .logo .void {
+            font-size: 10px;
+            color: #bbb;
+            font-weight: 400;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: -2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        nav a {
+            color: #555;
+            text-decoration: none;
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #fef3ed;
+            color: #f97316;
+        }
+        nav a.active {
+            background: #f97316;
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #f97316;
+            color: #f97316;
+            padding: 10px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #f97316;
+            color: #fff;
+        }
+
+        /* ---------- HERO (Split Layout) ---------- */
+        .hero {
+            padding: 60px 0 80px;
+            background: #ffffff;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text .badge {
+            background: #fef3ed;
+            color: #f97316;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.08;
+            margin-bottom: 16px;
+            color: #1e1a16;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .hero-stats .stat {
+            text-align: left;
+        }
+        .hero-stats .stat .number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #f97316;
+        }
+        .hero-stats .stat .label {
+            font-size: 13px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.35);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #fef3ed, #fff5ed);
+            border-radius: 24px;
+            padding: 30px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(249, 115, 22, 0.08);
+        }
+
+        /* ---------- MENU GRID (New) ---------- */
+        .menu {
+            padding: 80px 0;
+            background: #fefaf5;
+        }
+
+        .menu .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .menu .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #1e1a16;
+        }
+        .menu .section-header h2 span {
+            color: #f97316;
+        }
+        .menu .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .menu-item {
+            background: #ffffff;
+            padding: 28px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.4s;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+        .menu-item:hover {
+            border-color: #f97316;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.08);
+        }
+        .menu-item .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .menu-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e1a16;
+        }
+        .menu-item .price {
+            font-size: 18px;
+            font-weight: 800;
+            color: #f97316;
+            margin-top: 6px;
+        }
+        .menu-item .desc {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+        .menu-item .popular {
+            background: #f97316;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* ---------- FEATURES (Side-by-Side) ---------- */
+        .features {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .features .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .features .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #1e1a16;
+        }
+        .features .section-header h2 span {
+            color: #f97316;
+        }
+        .features .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: #fefaf5;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid #fef3ed;
+        }
+        .feature-item:hover {
+            transform: translateY(-6px);
+            border-color: #f97316;
+        }
+        .feature-item .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .feature-item h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e1a16;
+        }
+        .feature-item p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        /* ---------- TESTIMONIAL (Orange Background) ---------- */
+        .testimonial {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            padding: 60px 50px;
+            border-radius: 24px;
+            margin: 40px 0 60px;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-size: 26px;
+            font-style: italic;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto 16px;
+            line-height: 1.7;
+        }
+
+        .testimonial .author {
+            font-weight: 700;
+            color: #fde68a;
+            font-size: 18px;
+        }
+
+        /* ---------- CONTACT (Two Column) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #fefaf5;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1e1a16;
+        }
+        .contact-info h3 span {
+            color: #f97316;
+        }
+        .contact-info p {
+            color: #888;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #555;
+        }
+        .contact-info .detail .emoji {
+            font-size: 20px;
+        }
+
+        .contact-form input {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 2px solid #fef3ed;
+            border-radius: 12px;
+            background: #fefaf5;
+            color: #1e1a16;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.05);
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 17px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+        }
+
+        #form-message {
+            margin-top: 16px;
+            color: #f97316;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #1e1a16;
+            padding: 40px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+        footer .designer {
+            color: #fb923c;
+            font-weight: 700;
+        }
+        footer .void-brand {
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .testimonial blockquote {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <span class="icon-logo">🍽️</span>
+                <div>
+                    Taste<span>Bud</span>
+                    <span class="void">✦ THE VOID</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Menu</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Reserve Table</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">🌟 Fine Dining Experience</div>
+                <h1>Where <span>Flavors</span> Come to Life</h1>
+                <p>Modern cuisine crafted with passion. Each dish tells a story of taste, texture, and perfection.</p>
+                <button class="btn-primary" onclick="showAlert()">Explore Menu</button>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="number">15+</div>
+                        <div class="label">Award-Winning Chefs</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">120+</div>
+                        <div class="label">Exclusive Dishes</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">4.8⭐</div>
+                        <div class="label">Customer Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="tastebud.jpg" alt="TasteBud Restaurant" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MENU GRID ========== -->
+    <section class="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our <span>Signature</span> Dishes</h2>
+                <p>Chef's selection of the finest flavors</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <span class="icon">🥩</span>
+                    <h4>Wagyu Steak</h4>
+                    <div class="desc">A5 Japanese Wagyu</div>
+                    <div class="price">$89</div>
+                    <span class="popular">Most Popular</span>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🦞</span>
+                    <h4>Lobster Thermidor</h4>
+                    <div class="desc">Butter-poached lobster</div>
+                    <div class="price">$75</div>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍣</span>
+                    <h4>Omakase Platter</h4>
+                    <div class="desc">24-piece sushi selection</div>
+                    <div class="price">$95</div>
+                </div>
+                <div class="menu-item">
+                    <span class="icon">🍫</span>
+                    <h4>Chocolate Soufflé</h4>
+                    <div class="desc">Valrhona dark chocolate</div>
+                    <div class="price">$22</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why <span>TasteBud</span>?</h2>
+                <p>Experience dining at its finest</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="icon">👨‍🍳</span>
+                    <h4>Michelin Chefs</h4>
+                    <p>World-class chefs creating unforgettable culinary experiences.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🌿</span>
+                    <h4>Farm to Table</h4>
+                    <p>Fresh, sustainable ingredients sourced from local farms daily.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🍷</span>
+                    <h4>Wine Selection</h4>
+                    <p>Curated wine list featuring the finest vintages from around the world.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">✨</span>
+                    <h4>Elegant Ambiance</h4>
+                    <p>Perfect setting for romantic dinners and special celebrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <div class="container">
+        <div class="testimonial">
+            <blockquote>
+                “An extraordinary dining experience. Every bite was a journey of flavors.”
+            </blockquote>
+            <p class="author">— Michael R., Food Critic</p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Make a <span>Reservation</span></h3>
+                    <p>Book your table and enjoy a memorable dining experience with us.</p>
+                    <div class="detail">
+                        <span class="emoji">📧</span>
+                        reserve@tastebud.com
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📞</span>
+                        +1 800 555 0199
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📍</span>
+                        123 Gourmet Street, NYC
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <input type="text" id="guests" placeholder="Number of Guests" />
+                    <input type="text" id="date" placeholder="Preferred Date (e.g. Dec 25, 8:00 PM)" />
+                    <button onclick="submitForm()">Book Now 🍽️</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TasteBud. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('🌟 Explore our menu at tastebud.com/menu');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const guests = document.getElementById('guests').value.trim();
+            const date = document.getElementById('date').value.trim();
+
+            if (!name || !email || !guests || !date) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Reservation confirmed! We look forward to serving you.';
+            document.getElementById('form-message').style.color = '#f97316';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('guests').value = '';
+            document.getElementById('date').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Guests:', guests);
+            console.log('Date:', date);
+        }
+    </script>
+
+</body>
+</html>

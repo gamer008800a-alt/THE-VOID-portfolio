@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PowerGrid - Energy Solutions | THE VOID</title>
+    <!-- فونت اختصاصی انرژی: Exo 2 + Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080d0a;
+            color: #e0f0e8;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (Clipped with green neon) ---------- */
+        header {
+            background: rgba(8, 13, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 88%);
+            margin-bottom: -20px;
+            border-bottom: 1px solid rgba(0, 255, 150, 0.08);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 30px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #00ff96, #00cc77);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo .void {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9px;
+            color: #334;
+            font-weight: 400;
+            letter-spacing: 4px;
+            display: block;
+            margin-top: -2px;
+            -webkit-text-fill-color: #334;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #667;
+            text-decoration: none;
+            padding: 8px 20px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: rgba(0, 255, 150, 0.06);
+            color: #00ff96;
+        }
+        nav a.active {
+            background: rgba(0, 255, 150, 0.08);
+            color: #00ff96;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #00ff96;
+            color: #00ff96;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #00ff96;
+            color: #080d0a;
+            box-shadow: 0 0 50px rgba(0, 255, 150, 0.08);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 40px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,0 C300,100 600,20 900,80 C1050,110 1150,60 1200,40 L1200,120 L0,120 Z' fill='%230b1a12'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 150, 0.06);
+            color: #00ff96;
+            padding: 6px 20px 6px 16px;
+            border-radius: 30px;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(0, 255, 150, 0.06);
+            margin-bottom: 20px;
+        }
+        .hero-text .badge .dot {
+            width: 6px;
+            height: 6px;
+            background: #00ff96;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        .hero-text h1 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #00ff96, #00cc77);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            color: #667;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff96, #00cc77);
+            border: none;
+            color: #080d0a;
+            padding: 16px 44px;
+            border-radius: 30px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 50px rgba(0, 255, 150, 0.04);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 80px rgba(0, 255, 150, 0.12);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+        .hero-image .glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 150, 0.03), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 150, 0.03);
+        }
+
+        /* ---------- LINE CHART SECTION ---------- */
+        .chart-section {
+            padding: 80px 0 60px;
+            background: #0b1a12;
+            position: relative;
+        }
+
+        .chart-section .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .chart-section .section-header h2 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .chart-section .section-header h2 span {
+            color: #00ff96;
+        }
+        .chart-section .section-header p {
+            color: #445;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .chart-wrapper {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .chart-visual {
+            background: #080d0a;
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid rgba(0, 255, 150, 0.03);
+            position: relative;
+        }
+
+        .chart-visual .chart-title {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #667;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* نمودار خط شکسته با SVG - سبز */
+        .line-chart-svg {
+            width: 100%;
+            height: 200px;
+        }
+
+        .line-chart-svg .chart-line {
+            stroke: #00ff96;
+            stroke-width: 3;
+            fill: none;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 150, 0.08));
+        }
+
+        .line-chart-svg .chart-area {
+            fill: url(#areaGradientEnergy);
+            opacity: 0.08;
+        }
+
+        .line-chart-svg .chart-dot {
+            fill: #00ff96;
+            stroke: #080d0a;
+            stroke-width: 3;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .line-chart-svg .chart-dot:hover {
+            fill: #fff;
+            stroke: #00ff96;
+            stroke-width: 4;
+            r: 8;
+        }
+
+        .line-chart-svg .chart-label {
+            fill: #445;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .line-chart-svg .chart-value {
+            fill: #00ff96;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-anchor: middle;
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .line-chart-svg .chart-dot:hover + .chart-value,
+        .line-chart-svg .chart-dot:hover ~ .chart-value {
+            opacity: 1;
+        }
+
+        /* ---------- CIRCLE STATS (به جای کارت) ---------- */
+        .circle-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .circle-stat {
+            background: #080d0a;
+            border-radius: 30px;
+            padding: 24px 16px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 150, 0.03);
+            transition: 0.4s;
+            position: relative;
+        }
+        .circle-stat:hover {
+            border-color: rgba(0, 255, 150, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .circle-stat .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: transparent;
+        }
+
+        .circle-stat .circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .circle-stat .circle .number {
+            position: absolute;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            color: #e0f0e8;
+        }
+
+        .circle-stat .label {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 12px;
+            color: #445;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .circle-stat .sub-label {
+            font-size: 11px;
+            color: #334;
+            margin-top: 4px;
+        }
+
+        /* ---------- TESTIMONIAL (کارت عمودی) ---------- */
+        .testimonials {
+            padding: 80px 0;
+            background: #0b1a12;
+        }
+
+        .testimonials .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .testimonials .section-header h2 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .testimonials .section-header h2 span {
+            color: #00ff96;
+        }
+        .testimonials .section-header p {
+            color: #445;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #080d0a;
+            padding: 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 255, 150, 0.03);
+            transition: 0.4s;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(0, 255, 150, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .testimonial-card .quote {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #8899aa;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .testimonial-card .quote::before {
+            content: '"';
+            color: #00ff96;
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.3;
+        }
+        .testimonial-card .quote::after {
+            content: '"';
+            color: #00ff96;
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.3;
+        }
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-card .author .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ff96, #00cc77);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #080d0a;
+        }
+        .testimonial-card .author .name {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .testimonial-card .author .role {
+            font-size: 12px;
+            color: #445;
+        }
+        .testimonial-card .rating {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- CTA BANNER ---------- */
+        .cta-banner {
+            background: linear-gradient(135deg, #0b1a12, #122518);
+            padding: 60px 0;
+            border-top: 1px solid rgba(0, 255, 150, 0.03);
+            border-bottom: 1px solid rgba(0, 255, 150, 0.03);
+        }
+
+        .cta-banner .cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .cta-banner .cta-content h3 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cta-banner .cta-content h3 span {
+            color: #00ff96;
+        }
+        .cta-banner .cta-content p {
+            color: #667;
+        }
+        .cta-banner .cta-content .btn-cta {
+            background: transparent;
+            border: 1.5px solid #00ff96;
+            color: #00ff96;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cta-banner .cta-content .btn-cta:hover {
+            background: #00ff96;
+            color: #080d0a;
+            box-shadow: 0 0 50px rgba(0, 255, 150, 0.08);
+        }
+
+        /* ---------- CONTACT ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #080d0a;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+            background: #0b1a12;
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 255, 150, 0.03);
+        }
+
+        .contact-info h3 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contact-info h3 span {
+            color: #00ff96;
+        }
+        .contact-info p {
+            color: #445;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+            font-size: 14px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #667;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            background: #080d0a;
+            color: #e0f0e8;
+            font-size: 14px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #00ff96;
+            box-shadow: 0 0 30px rgba(0, 255, 150, 0.02);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+            border-radius: 20px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #00ff96, #00cc77);
+            border: none;
+            color: #080d0a;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 255, 150, 0.06);
+        }
+        #form-message {
+            margin-top: 14px;
+            color: #00ff96;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #040a08;
+            padding: 40px 0;
+            text-align: center;
+            color: #334;
+            font-size: 13px;
+            border-top: 1px solid rgba(0, 255, 150, 0.02);
+        }
+        footer .designer {
+            color: #00ff96;
+            font-weight: 600;
+        }
+        footer .void-brand {
+            color: #223;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a {
+            color: #445;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        footer .footer-links a:hover {
+            color: #00ff96;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .chart-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .circle-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .cta-banner .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            nav a {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .circle-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .circle-stat .circle {
+                width: 60px;
+                height: 60px;
+            }
+            .circle-stat .circle .number {
+                font-size: 14px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 24px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+            .circle-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .circle-stat {
+                padding: 16px 10px;
+            }
+            .circle-stat .circle {
+                width: 50px;
+                height: 50px;
+            }
+            .circle-stat .circle .number {
+                font-size: 12px;
+            }
+            .cta-banner .cta-content h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                Power<span>Grid</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Solutions</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Get Energy</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">
+                    <span class="dot"></span>
+                    Clean Energy Solutions
+                </div>
+                <h1>Powering The <span>Future</span></h1>
+                <p>Sustainable, renewable energy for a better tomorrow. Join the green revolution.</p>
+                <button class="btn-primary" onclick="showAlert()">Join The Movement</button>
+            </div>
+            <div class="hero-image">
+                <div class="glow-ring"></div>
+                <img src="powergrid.jpg" alt="PowerGrid" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LINE CHART SECTION ========== -->
+    <section class="chart-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Energy <span>Production</span></h2>
+                <p>Daily output in megawatt-hours</p>
+            </div>
+            <div class="chart-wrapper">
+                <div class="chart-visual">
+                    <div class="chart-title">📈 Renewable Energy Output (MWh)</div>
+                    <svg class="line-chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="areaGradientEnergy" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#00ff96" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="#00ff96" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Area fill -->
+                        <polygon class="chart-area" points="0,160 50,130 120,170 200,100 280,140 360,70 440,110 520,50 600,90 600,200 0,200" />
+                        <!-- Line -->
+                        <polyline class="chart-line" points="0,160 50,130 120,170 200,100 280,140 360,70 440,110 520,50 600,90" />
+                        <!-- Dots -->
+                        <circle class="chart-dot" cx="0" cy="160" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="0" y="145">160</text>
+                        <text class="chart-label" x="0" y="192">Mon</text>
+
+                        <circle class="chart-dot" cx="50" cy="130" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="50" y="115">130</text>
+                        <text class="chart-label" x="50" y="192">Tue</text>
+
+                        <circle class="chart-dot" cx="120" cy="170" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="120" y="155">170</text>
+                        <text class="chart-label" x="120" y="192">Wed</text>
+
+                        <circle class="chart-dot" cx="200" cy="100" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="200" y="85">100</text>
+                        <text class="chart-label" x="200" y="192">Thu</text>
+
+                        <circle class="chart-dot" cx="280" cy="140" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="280" y="125">140</text>
+                        <text class="chart-label" x="280" y="192">Fri</text>
+
+                        <circle class="chart-dot" cx="360" cy="70" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="360" y="55">70</text>
+                        <text class="chart-label" x="360" y="192">Sat</text>
+
+                        <circle class="chart-dot" cx="440" cy="110" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="440" y="95">110</text>
+                        <text class="chart-label" x="440" y="192">Sun</text>
+
+                        <circle class="chart-dot" cx="520" cy="50" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="520" y="35">50</text>
+                        <text class="chart-label" x="520" y="192">Mon</text>
+
+                        <circle class="chart-dot" cx="600" cy="90" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="600" y="75">90</text>
+                        <text class="chart-label" x="600" y="192">Tue</text>
+                    </svg>
+                </div>
+                <div class="circle-stats">
+                    <div class="circle-stat">
+                        <div class="circle">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="32" stroke="#00ff96" stroke-width="4" fill="none" stroke-dasharray="201" stroke-dashoffset="30" />
+                            </svg>
+                            <span class="number">85%</span>
+                        </div>
+                        <div class="label">Renewable</div>
+                        <div class="sub-label">of total energy</div>
+                    </div>
+                    <div class="circle-stat">
+                        <div class="circle">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="32" stroke="#00ff96" stroke-width="4" fill="none" stroke-dasharray="201" stroke-dashoffset="60" />
+                            </svg>
+                            <span class="number">70%</span>
+                        </div>
+                        <div class="label">Efficiency</div>
+                        <div class="sub-label">grid performance</div>
+                    </div>
+                    <div class="circle-stat">
+                        <div class="circle">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="32" stroke="#00ff96" stroke-width="4" fill="none" stroke-dasharray="201" stroke-dashoffset="15" />
+                            </svg>
+                            <span class="number">92%</span>
+                        </div>
+                        <div class="label">Coverage</div>
+                        <div class="sub-label">nationwide reach</div>
+                    </div>
+                    <div class="circle-stat">
+                        <div class="circle">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="32" stroke="#00ff96" stroke-width="4" fill="none" stroke-dasharray="201" stroke-dashoffset="45" />
+                            </svg>
+                            <span class="number">78%</span>
+                        </div>
+                        <div class="label">Green Index</div>
+                        <div class="sub-label">sustainability score</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our <span>Partners</span> Say</h2>
+                <p>Trusted by industry leaders</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">PowerGrid transformed our entire energy infrastructure. Green and efficient.</div>
+                    <div class="author">
+                        <div class="avatar">JD</div>
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">CEO, GreenCorp</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">The most reliable renewable energy partner we've ever worked with.</div>
+                    <div class="author">
+                        <div class="avatar">SM</div>
+                        <div>
+                            <div class="name">Sarah Miller</div>
+                            <div class="role">Sustainability Lead</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">PowerGrid's solutions are innovative, affordable, and truly sustainable.</div>
+                    <div class="author">
+                        <div class="avatar">AK</div>
+                        <div>
+                            <div class="name">Alex Kim</div>
+                            <div class="role">Energy Director</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <h3>Ready for <span>Green Energy</span>?</h3>
+                    <p>Join the renewable revolution today</p>
+                </div>
+                <button class="btn-cta" onclick="showAlert()">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Let's <span>Connect</span></h3>
+                    <p>Ready to make the switch to clean energy? We're here to help.</p>
+                    <div class="detail">📧 hello@powergrid.com</div>
+                    <div class="detail">📞 +1 800 555 0606</div>
+                    <div class="detail">📍 Global — Green Energy</div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <input type="text" id="company" placeholder="Company Name" />
+                    <textarea id="message" placeholder="Tell us about your energy needs..."></textarea>
+                    <button onclick="submitForm()">Send Message ⚡</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 PowerGrid. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('⚡ Ready for green energy? Visit powergrid.com/solutions');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !company || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Thanks! Our energy team will contact you within 24 hours.';
+            document.getElementById('form-message').style.color = '#00ff96';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('company').value = '';
+            document.getElementById('message').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Company:', company);
+            console.log('Message:', message);
+        }
+    </script>
+
+</body>
+</html>

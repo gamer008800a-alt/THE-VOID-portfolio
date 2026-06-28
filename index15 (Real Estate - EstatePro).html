@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EstatePro - Luxury Real Estate | THE VOID</title>
+    <!-- فونت‌های لوکس -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0f14;
+            color: #d4ddd0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- LUXURY BACKGROUND (Navy + Gold) ---------- */
+        .luxury-bg {
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.02), transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.02), transparent 50%),
+                #0a0f14;
+        }
+
+        /* ---------- GOLD + NAVY EFFECTS ---------- */
+        .gold-text {
+            color: #d4af37;
+        }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+        .gold-glow {
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.08), 0 0 80px rgba(212, 175, 55, 0.03);
+        }
+        .navy-text {
+            color: #1a2a3a;
+        }
+
+        /* ---------- HEADER (LOGO MIDDLE) ---------- */
+        header {
+            background: rgba(10, 15, 20, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .logo span {
+            color: #d4af37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+        }
+        .logo .void {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            color: #4a5a5a;
+            font-weight: 400;
+            letter-spacing: 6px;
+            display: block;
+            margin-top: -4px;
+            text-transform: uppercase;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #7a8a8a;
+            text-decoration: none;
+            padding: 8px 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: 0.4s;
+            transform: translateX(-50%);
+        }
+        nav a:hover {
+            color: #d4af37;
+        }
+        nav a:hover::after {
+            width: 60%;
+        }
+        nav a.active {
+            color: #d4af37;
+        }
+        nav a.active::after {
+            width: 60%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            padding: 10px 32px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            border-radius: 30px;
+        }
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.04);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.02);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 60px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 50%, rgba(212, 175, 55, 0.02), transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(212, 175, 55, 0.02), transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.04);
+            color: #d4af37;
+            padding: 6px 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+            margin-bottom: 20px;
+            border-radius: 30px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 54px;
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .hero-text h1 span {
+            color: #d4af37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+        }
+
+        .hero-text p {
+            font-family: 'Cormorant Garamond', serif;
+            color: #7a8a8a;
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 480px;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37, #b8962e);
+            border: none;
+            color: #0a0f14;
+            padding: 16px 44px;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.08);
+        }
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            filter: saturate(0.8) contrast(1.05);
+            transition: 0.5s;
+        }
+        .hero-image img:hover {
+            filter: saturate(1) contrast(1.05);
+        }
+
+        /* ---------- GALLERY SECTION (املاک لوکس) ---------- */
+        .gallery-section {
+            padding: 80px 0;
+            background: #0a0f14;
+            border-top: 1px solid rgba(212, 175, 55, 0.02);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.02);
+        }
+
+        .gallery-section .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .gallery-section .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .gallery-section .section-header h2 span {
+            color: #d4af37;
+        }
+        .gallery-section .section-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a5a5a;
+            font-size: 17px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: #0a0f14;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.5s;
+            position: relative;
+        }
+        .gallery-item:hover {
+            border-color: rgba(212, 175, 55, 0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.7) contrast(1.05);
+            transition: 0.5s;
+        }
+        .gallery-item:hover img {
+            filter: saturate(1) contrast(1.05);
+            transform: scale(1.01);
+        }
+
+        .gallery-item .info {
+            padding: 20px 24px 24px;
+            text-align: center;
+        }
+        .gallery-item .info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .gallery-item .info p {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a5a5a;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+        .gallery-item .gold-line {
+            width: 40px;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.08);
+            margin: 8px auto 0;
+        }
+
+        /* ---------- PROPERTIES (CARDS LUXURY - NAVY) ---------- */
+        .properties {
+            padding: 80px 0;
+            background: #0a0f14;
+        }
+
+        .properties .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .properties .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .properties .section-header h2 span {
+            color: #d4af37;
+        }
+        .properties .section-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a5a5a;
+            font-size: 17px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .property-item {
+            background: #0a0f14;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+            transition: 0.5s;
+            position: relative;
+        }
+        .property-item::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.04), transparent);
+            transition: 0.4s;
+        }
+        .property-item:hover::before {
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+        }
+        .property-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212, 175, 55, 0.04);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .property-item .icon {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .property-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .property-item .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-top: 8px;
+        }
+        .property-item .desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            color: #4a5a5a;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+        .property-item .sticker {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.04);
+            color: #d4af37;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            margin-top: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+            border-radius: 30px;
+        }
+
+        /* ---------- TESTIMONIALS (LUXURY - NAVY) ---------- */
+        .testimonials {
+            padding: 80px 0;
+            background: #0a0f14;
+            border-top: 1px solid rgba(212, 175, 55, 0.02);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.02);
+        }
+
+        .testimonials .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .testimonials .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .testimonials .section-header h2 span {
+            color: #d4af37;
+        }
+        .testimonials .section-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a5a5a;
+            font-size: 17px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #0a0f14;
+            padding: 32px 28px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            transition: 0.5s;
+            position: relative;
+        }
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.04), transparent);
+            transition: 0.4s;
+        }
+        .testimonial-card:hover::after {
+            left: 0;
+            right: 0;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-card .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #7a8a8a;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .testimonial-card .quote::before {
+            content: '"';
+            color: #d4af37;
+            font-size: 32px;
+            font-weight: 700;
+            opacity: 0.1;
+            margin-right: 4px;
+        }
+        .testimonial-card .quote::after {
+            content: '"';
+            color: #d4af37;
+            font-size: 32px;
+            font-weight: 700;
+            opacity: 0.1;
+            margin-left: 4px;
+        }
+
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-card .author .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.02), rgba(212, 175, 55, 0.01));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+        }
+        .testimonial-card .author .name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        .testimonial-card .author .role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            color: #4a5a5a;
+        }
+        .testimonial-card .rating {
+            color: #d4af37;
+            font-size: 14px;
+            margin-top: 12px;
+            letter-spacing: 3px;
+        }
+
+        /* ---------- CTA BANNER (GOLD + NAVY) ---------- */
+        .cta-banner {
+            background: linear-gradient(135deg, #1a2a3a, #0a1518);
+            padding: 50px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.02);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.02);
+        }
+
+        .cta-banner .cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .cta-banner .cta-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .cta-banner .cta-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            color: #7a8a8a;
+        }
+        .cta-banner .cta-content .btn-cta {
+            background: #d4af37;
+            border: none;
+            color: #0a0f14;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .cta-banner .cta-content .btn-cta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.08);
+        }
+
+        /* ---------- CONTACT (LUXURY - NAVY) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #0a0f14;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+            background: #0a0f14;
+            padding: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .contact-info h3 span {
+            color: #d4af37;
+        }
+        .contact-info p {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a5a5a;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+            font-size: 17px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            color: #7a8a8a;
+        }
+        .contact-info .detail .emoji {
+            color: #d4af37;
+            font-size: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 20px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 30px;
+            background: #0a0f14;
+            color: #d4ddd0;
+            font-size: 14px;
+            transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: rgba(212, 175, 55, 0.04);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.01);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+            border-radius: 20px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37, #b8962e);
+            border: none;
+            color: #0a0f14;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.04);
+        }
+        #form-message {
+            margin-top: 14px;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 14px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ---------- FOOTER (LUXURY - NAVY) ---------- */
+        footer {
+            background: #060a0e;
+            padding: 50px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.02);
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.04), transparent);
+        }
+
+        footer .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        footer .footer-logo span {
+            color: #d4af37;
+        }
+
+        footer .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.04);
+            margin: 16px auto;
+        }
+
+        footer .designer {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+        footer .void-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            color: #4a5a5a;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 4px;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a5a5a;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        footer .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        footer .footer-copy {
+            font-family: 'Cormorant Garamond', serif;
+            color: #2a3a3a;
+            font-size: 12px;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .cta-banner .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 12px;
+            }
+            nav a {
+                padding: 6px 16px;
+                font-size: 14px;
+            }
+            .properties-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+            .logo {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+            .properties-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .property-item {
+                padding: 20px 16px;
+            }
+            .property-item .icon {
+                font-size: 32px;
+            }
+            .property-item h4 {
+                font-size: 15px;
+            }
+            .property-item .price {
+                font-size: 18px;
+            }
+            .cta-banner .cta-content h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER (LOGO MIDDLE) ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                Estate<span>Pro</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="#" class="active">Home</a>
+                    <a href="#">Properties</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </nav>
+                <button class="btn-outline">View Properties</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">✦ Prestige Living</div>
+                <h1>Discover <span>Your Legacy</span></h1>
+                <p>Exceptional estates, penthouses, and coastal villas. Curated for those who demand the finest.</p>
+                <button class="btn-primary" onclick="showAlert()">Explore Properties</button>
+            </div>
+            <div class="hero-image">
+                <img src="estatepro.jpg" alt="EstatePro Luxury Real Estate" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY SECTION ========== -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured <span>Estates</span></h2>
+                <div class="subtitle">✦ Handpicked luxury properties ✦</div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="estate1.jpg" alt="Modern Villa" />
+                    <div class="info">
+                        <h4>Modern Villa</h4>
+                        <p>Beverly Hills • 8 beds • 12 baths</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="estate2.jpg" alt="Penthouse" />
+                    <div class="info">
+                        <h4>Sky Penthouse</h4>
+                        <p>Manhattan • 4 beds • 5 baths</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="estate3.jpg" alt="Coastal Estate" />
+                    <div class="info">
+                        <h4>Coastal Estate</h4>
+                        <p>Malibu • 6 beds • 8 baths</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="estate4.jpg" alt="Chateau" />
+                    <div class="info">
+                        <h4>French Chateau</h4>
+                        <p>Provence • 12 beds • 10 baths</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROPERTIES ========== -->
+    <section class="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2>Premium <span>Listings</span></h2>
+                <div class="subtitle">✦ Exclusive properties for discerning buyers ✦</div>
+            </div>
+            <div class="properties-grid">
+                <div class="property-item">
+                    <span class="icon">🏛️</span>
+                    <h4>Beverly Hills</h4>
+                    <div class="desc">8,500 sq ft • 8 beds</div>
+                    <div class="price">$18.5M</div>
+                    <span class="sticker">⭐ Featured</span>
+                </div>
+                <div class="property-item">
+                    <span class="icon">🌆</span>
+                    <h4>Central Park</h4>
+                    <div class="desc">4,200 sq ft • 4 beds</div>
+                    <div class="price">$12.2M</div>
+                    <span class="sticker">✦ Premium</span>
+                </div>
+                <div class="property-item">
+                    <span class="icon">🌊</span>
+                    <h4>Malibu Coast</h4>
+                    <div class="desc">6,800 sq ft • 6 beds</div>
+                    <div class="price">$22.8M</div>
+                    <span class="sticker">👑 Exclusive</span>
+                </div>
+                <div class="property-item">
+                    <span class="icon">🏰</span>
+                    <h4>French Chateau</h4>
+                    <div class="desc">15,000 sq ft • 12 beds</div>
+                    <div class="price">$35.0M</div>
+                    <span class="sticker">🌍 Global</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client <span>Testimonials</span></h2>
+                <div class="subtitle">✦ What our clients say ✦</div>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">EstatePro found us our dream home. Their expertise is unmatched.</div>
+                    <div class="author">
+                        <div class="avatar">JD</div>
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">CEO, GlobalCorp</div>
+                        </div>
+                    </div>
+                    <div class="rating">✦ ✦ ✦ ✦ ✦</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">The attention to detail and premium service was exceptional.</div>
+                    <div class="author">
+                        <div class="avatar">SM</div>
+                        <div>
+                            <div class="name">Sarah Miller</div>
+                            <div class="role">Investor</div>
+                        </div>
+                    </div>
+                    <div class="rating">✦ ✦ ✦ ✦ ✦</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">EstatePro made our luxury property purchase seamless and enjoyable.</div>
+                    <div class="author">
+                        <div class="avatar">AK</div>
+                        <div>
+                            <div class="name">Alex Kim</div>
+                            <div class="role">Entrepreneur</div>
+                        </div>
+                    </div>
+                    <div class="rating">✦ ✦ ✦ ✦ ✦</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <h3>Find Your <span style="color: #d4af37;">Estate</span></h3>
+                    <p>Let us help you find your perfect property</p>
+                </div>
+                <button class="btn-cta" onclick="showAlert()">Book Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Schedule a <span>Consultation</span></h3>
+                    <p>Let our experts help you find your dream property.</p>
+                    <div class="detail"><span class="emoji">✉</span> hello@estatepro.com</div>
+                    <div class="detail"><span class="emoji">📞</span> +1 800 555 0909</div>
+                    <div class="detail"><span class="emoji">📍</span> Global Luxury Real Estate</div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <input type="text" id="location" placeholder="Preferred Location" />
+                    <input type="text" id="budget" placeholder="Budget Range" />
+                    <button onclick="submitForm()">Send Request</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                Estate<span>Pro</span>
+            </div>
+            <div class="footer-divider"></div>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 EstatePro. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('✦ Explore luxury estates at estatepro.com/properties');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const budget = document.getElementById('budget').value.trim();
+
+            if (!name || !email || !location || !budget) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Thank you! Our luxury real estate advisor will contact you shortly.';
+            document.getElementById('form-message').style.color = '#d4af37';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('location').value = '';
+            document.getElementById('budget').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Location:', location);
+            console.log('Budget:', budget);
+        }
+    </script>
+
+</body>
+</html>

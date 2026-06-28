@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VogueWear - Fashion Store | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #fbf9f7;
+            color: #1a1614;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (Modern) ---------- */
+        header {
+            background: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo .icon-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #be185d, #9d174d);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+        }
+        .logo span {
+            color: #be185d;
+        }
+        .logo .void {
+            font-size: 10px;
+            color: #bbb;
+            font-weight: 400;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: -2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        nav a {
+            color: #555;
+            text-decoration: none;
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #fce7f3;
+            color: #be185d;
+        }
+        nav a.active {
+            background: #be185d;
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #be185d;
+            color: #be185d;
+            padding: 10px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #be185d;
+            color: #fff;
+        }
+
+        /* ---------- HERO (Split Layout) ---------- */
+        .hero {
+            padding: 60px 0 80px;
+            background: #ffffff;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text .badge {
+            background: #fce7f3;
+            color: #be185d;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.08;
+            margin-bottom: 16px;
+            color: #1a1614;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #be185d, #9d174d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .hero-stats .stat {
+            text-align: left;
+        }
+        .hero-stats .stat .number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #be185d;
+        }
+        .hero-stats .stat .label {
+            font-size: 13px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #be185d, #9d174d);
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(190, 24, 93, 0.35);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #fce7f3, #fdf2f8);
+            border-radius: 24px;
+            padding: 30px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(190, 24, 93, 0.08);
+        }
+
+        /* ---------- PRODUCT GRID ---------- */
+        .products {
+            padding: 80px 0;
+            background: #fbf9f7;
+        }
+
+        .products .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .products .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #1a1614;
+        }
+        .products .section-header h2 span {
+            color: #be185d;
+        }
+        .products .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .product-item {
+            background: #ffffff;
+            padding: 24px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.4s;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+        .product-item:hover {
+            border-color: #be185d;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(190, 24, 93, 0.08);
+        }
+        .product-item .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .product-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a1614;
+        }
+        .product-item .price {
+            font-size: 18px;
+            font-weight: 800;
+            color: #be185d;
+            margin-top: 6px;
+        }
+        .product-item .desc {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+        .product-item .sale {
+            background: #be185d;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* ---------- FEATURES ---------- */
+        .features {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .features .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .features .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #1a1614;
+        }
+        .features .section-header h2 span {
+            color: #be185d;
+        }
+        .features .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: #fbf9f7;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid #fce7f3;
+        }
+        .feature-item:hover {
+            transform: translateY(-6px);
+            border-color: #be185d;
+        }
+        .feature-item .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .feature-item h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1614;
+        }
+        .feature-item p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        /* ---------- TESTIMONIAL (Pink Background) ---------- */
+        .testimonial {
+            background: linear-gradient(135deg, #be185d, #9d174d);
+            padding: 60px 50px;
+            border-radius: 24px;
+            margin: 40px 0 60px;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-size: 26px;
+            font-style: italic;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto 16px;
+            line-height: 1.7;
+        }
+
+        .testimonial .author {
+            font-weight: 700;
+            color: #fbcfe8;
+            font-size: 18px;
+        }
+
+        /* ---------- CONTACT (Two Column) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #fbf9f7;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1a1614;
+        }
+        .contact-info h3 span {
+            color: #be185d;
+        }
+        .contact-info p {
+            color: #888;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #555;
+        }
+        .contact-info .detail .emoji {
+            font-size: 20px;
+        }
+
+        .contact-form input,
+        .contact-form select {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 2px solid #fce7f3;
+            border-radius: 12px;
+            background: #fbf9f7;
+            color: #1a1614;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: #be185d;
+            box-shadow: 0 0 0 4px rgba(190, 24, 93, 0.05);
+        }
+
+        .contact-form select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #be185d, #9d174d);
+            border: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 17px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(190, 24, 93, 0.3);
+        }
+
+        #form-message {
+            margin-top: 16px;
+            color: #be185d;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #1a1614;
+            padding: 40px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+        footer .designer {
+            color: #f472b6;
+            font-weight: 700;
+        }
+        footer .void-brand {
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .testimonial blockquote {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <span class="icon-logo">👗</span>
+                <div>
+                    Vogue<span>Wear</span>
+                    <span class="void">✦ THE VOID</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Shop Now</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">🌟 New Collection 2026</div>
+                <h1>Style That <span>Defines</span> You</h1>
+                <p>Discover the latest trends in fashion. From casual wear to elegant pieces — find your perfect look.</p>
+                <button class="btn-primary" onclick="showAlert()">Explore Collection</button>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="number">25K+</div>
+                        <div class="label">Happy Customers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">500+</div>
+                        <div class="label">Styles Available</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">4.9⭐</div>
+                        <div class="label">Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="voguewear.jpg" alt="VogueWear Fashion" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUCT GRID ========== -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Bestseller <span>Collection</span></h2>
+                <p>Most loved pieces this season</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-item">
+                    <span class="icon">👗</span>
+                    <h4>Maxi Dress</h4>
+                    <div class="desc">Floral print, summer collection</div>
+                    <div class="price">$89</div>
+                    <span class="sale">Best Seller</span>
+                </div>
+                <div class="product-item">
+                    <span class="icon">🧥</span>
+                    <h4>Classic Blazer</h4>
+                    <div class="desc">Tailored fit, wool blend</div>
+                    <div class="price">$149</div>
+                </div>
+                <div class="product-item">
+                    <span class="icon">👔</span>
+                    <h4>Silk Shirt</h4>
+                    <div class="desc">Premium silk, elegant design</div>
+                    <div class="price">$79</div>
+                    <span class="sale">Sale</span>
+                </div>
+                <div class="product-item">
+                    <span class="icon">👠</span>
+                    <h4>Leather Heels</h4>
+                    <div class="desc">Italian leather, 3-inch heel</div>
+                    <div class="price">$129</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why <span>VogueWear</span>?</h2>
+                <p>Fashion that speaks for itself</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="icon">✨</span>
+                    <h4>Premium Quality</h4>
+                    <p>Every piece is crafted with the finest materials and attention to detail.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🌿</span>
+                    <h4>Sustainable Fashion</h4>
+                    <p>Eco-friendly materials and ethical production practices.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🚚</span>
+                    <h4>Free Shipping</h4>
+                    <p>On orders over $100. Worldwide delivery available.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🔄</span>
+                    <h4>Easy Returns</h4>
+                    <p>30-day return policy. No questions asked.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <div class="container">
+        <div class="testimonial">
+            <blockquote>
+                “VogueWear is my go-to for fashion. The quality is amazing and their pieces always get me compliments.”
+            </blockquote>
+            <p class="author">— Emma S., Fashion Blogger</p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Stay <span>Stylish</span></h3>
+                    <p>Subscribe to our newsletter and get exclusive deals, new arrivals, and style tips.</p>
+                    <div class="detail">
+                        <span class="emoji">📧</span>
+                        hello@voguewear.com
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📞</span>
+                        +1 800 555 0101
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📍</span>
+                        Online — Worldwide
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <select id="interest">
+                        <option value="">What are you looking for?</option>
+                        <option value="Womens">Women's Fashion</option>
+                        <option value="Mens">Men's Fashion</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Sale">Sale & Deals</option>
+                    </select>
+                    <button onclick="submitForm()">Subscribe ✨</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 VogueWear. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('👗 Explore our collection at voguewear.com/collection');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const interest = document.getElementById('interest').value;
+
+            if (!name || !email || !interest) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Welcome! You\'ll receive style updates and exclusive offers.';
+            document.getElementById('form-message').style.color = '#be185d';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('interest').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Interest:', interest);
+        }
+    </script>
+
+</body>
+</html>

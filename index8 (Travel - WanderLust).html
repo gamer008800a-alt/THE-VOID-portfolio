@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WanderLust - Travel Agency | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f0f7ff;
+            color: #0f1a2e;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (Modern) ---------- */
+        header {
+            background: #ffffff;
+            padding: 16px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo .icon-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+        }
+        .logo span {
+            color: #0891b2;
+        }
+        .logo .void {
+            font-size: 10px;
+            color: #bbb;
+            font-weight: 400;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: -2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        nav a {
+            color: #555;
+            text-decoration: none;
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #e0f7fa;
+            color: #0891b2;
+        }
+        nav a.active {
+            background: #0891b2;
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #0891b2;
+            color: #0891b2;
+            padding: 10px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #0891b2;
+            color: #fff;
+        }
+
+        /* ---------- HERO (Split Layout) ---------- */
+        .hero {
+            padding: 60px 0 80px;
+            background: #ffffff;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text .badge {
+            background: #e0f7fa;
+            color: #0891b2;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.08;
+            margin-bottom: 16px;
+            color: #0f1a2e;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .hero-stats .stat {
+            text-align: left;
+        }
+        .hero-stats .stat .number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0891b2;
+        }
+        .hero-stats .stat .label {
+            font-size: 13px;
+            color: #888;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(8, 145, 178, 0.35);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #e0f7fa, #f0f7ff);
+            border-radius: 24px;
+            padding: 30px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(8, 145, 178, 0.08);
+        }
+
+        /* ---------- DESTINATION GRID ---------- */
+        .destinations {
+            padding: 80px 0;
+            background: #f0f7ff;
+        }
+
+        .destinations .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .destinations .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #0f1a2e;
+        }
+        .destinations .section-header h2 span {
+            color: #0891b2;
+        }
+        .destinations .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .destination-item {
+            background: #ffffff;
+            padding: 24px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.4s;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+        .destination-item:hover {
+            border-color: #0891b2;
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(8, 145, 178, 0.08);
+        }
+        .destination-item .icon {
+            font-size: 44px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .destination-item h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f1a2e;
+        }
+        .destination-item .price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0891b2;
+            margin-top: 6px;
+        }
+        .destination-item .desc {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+        .destination-item .popular {
+            background: #0891b2;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* ---------- FEATURES ---------- */
+        .features {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .features .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .features .section-header h2 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #0f1a2e;
+        }
+        .features .section-header h2 span {
+            color: #0891b2;
+        }
+        .features .section-header p {
+            color: #888;
+            font-size: 17px;
+            margin-top: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: #f0f7ff;
+            padding: 32px 24px;
+            border-radius: 16px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid #e0f7fa;
+        }
+        .feature-item:hover {
+            transform: translateY(-6px);
+            border-color: #0891b2;
+        }
+        .feature-item .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .feature-item h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #0f1a2e;
+        }
+        .feature-item p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        /* ---------- TESTIMONIAL (Cyan Background) ---------- */
+        .testimonial {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            padding: 60px 50px;
+            border-radius: 24px;
+            margin: 40px 0 60px;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-size: 26px;
+            font-style: italic;
+            color: #fff;
+            max-width: 700px;
+            margin: 0 auto 16px;
+            line-height: 1.7;
+        }
+
+        .testimonial .author {
+            font-weight: 700;
+            color: #a5f3fc;
+            font-size: 18px;
+        }
+
+        /* ---------- CONTACT (Two Column) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #f0f7ff;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #0f1a2e;
+        }
+        .contact-info h3 span {
+            color: #0891b2;
+        }
+        .contact-info p {
+            color: #888;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #555;
+        }
+        .contact-info .detail .emoji {
+            font-size: 20px;
+        }
+
+        .contact-form input,
+        .contact-form select {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 2px solid #e0f7fa;
+            border-radius: 12px;
+            background: #f0f7ff;
+            color: #0f1a2e;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: #0891b2;
+            box-shadow: 0 0 0 4px rgba(8, 145, 178, 0.05);
+        }
+
+        .contact-form select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            border: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 17px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(8, 145, 178, 0.3);
+        }
+
+        #form-message {
+            margin-top: 16px;
+            color: #0891b2;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #0f1a2e;
+            padding: 40px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+        footer .designer {
+            color: #67e8f9;
+            font-weight: 700;
+        }
+        footer .void-brand {
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .destination-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            .destination-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .testimonial blockquote {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+            .destination-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <span class="icon-logo">🌍</span>
+                <div>
+                    Wander<span>Lust</span>
+                    <span class="void">✦ THE VOID</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Destinations</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Plan Trip</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">✈️ Explore the World</div>
+                <h1>Travel <span>Beyond</span> Boundaries</h1>
+                <p>Discover breathtaking destinations, immerse in cultures, and create memories that last a lifetime.</p>
+                <button class="btn-primary" onclick="showAlert()">Start Your Journey</button>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="number">50+</div>
+                        <div class="label">Destinations</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">8K+</div>
+                        <div class="label">Adventurers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">4.9⭐</div>
+                        <div class="label">Traveler Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="wanderlust.jpg" alt="WanderLust Travel" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DESTINATION GRID ========== -->
+    <section class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Top <span>Destinations</span></h2>
+                <p>Handpicked escapes just for you</p>
+            </div>
+            <div class="destination-grid">
+                <div class="destination-item">
+                    <span class="icon">🏝️</span>
+                    <h4>Bali, Indonesia</h4>
+                    <div class="desc">Tropical paradise</div>
+                    <div class="price">From $599</div>
+                    <span class="popular">Best Seller</span>
+                </div>
+                <div class="destination-item">
+                    <span class="icon">🏔️</span>
+                    <h4>Swiss Alps</h4>
+                    <div class="desc">Snow-capped peaks</div>
+                    <div class="price">From $899</div>
+                </div>
+                <div class="destination-item">
+                    <span class="icon">🗽</span>
+                    <h4>New York City</h4>
+                    <div class="desc">The city that never sleeps</div>
+                    <div class="price">From $699</div>
+                </div>
+                <div class="destination-item">
+                    <span class="icon">🏯</span>
+                    <h4>Kyoto, Japan</h4>
+                    <div class="desc">Temples & cherry blossoms</div>
+                    <div class="price">From $799</div>
+                    <span class="popular">Trending</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why <span>WanderLust</span>?</h2>
+                <p>Your trusted travel partner</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="icon">🤝</span>
+                    <h4>Expert Guides</h4>
+                    <p>Local experts who know every hidden gem and secret spot.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">💎</span>
+                    <h4>Best Price Guarantee</h4>
+                    <p>We match any price. You always get the best deal.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🛡️</span>
+                    <h4>24/7 Support</h4>
+                    <p>Our team is always available to help you, anywhere in the world.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🌱</span>
+                    <h4>Sustainable Travel</h4>
+                    <p>Eco-conscious experiences that protect the planet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <div class="container">
+        <div class="testimonial">
+            <blockquote>
+                “WanderLust made our dream trip to Japan unforgettable. Every detail was perfect.”
+            </blockquote>
+            <p class="author">— Lisa & Mark, Travelers</p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Plan Your <span>Adventure</span></h3>
+                    <p>Tell us your dream destination and we'll create a customized itinerary just for you.</p>
+                    <div class="detail">
+                        <span class="emoji">📧</span>
+                        hello@wanderlust.com
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📞</span>
+                        +1 800 555 0202
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📍</span>
+                        Serving travelers worldwide
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <select id="destination">
+                        <option value="">Dream Destination</option>
+                        <option value="Bali">Bali, Indonesia</option>
+                        <option value="Swiss Alps">Swiss Alps</option>
+                        <option value="New York">New York City</option>
+                        <option value="Kyoto">Kyoto, Japan</option>
+                        <option value="Other">Other (tell us below)</option>
+                    </select>
+                    <input type="text" id="group" placeholder="Number of Travelers" />
+                    <button onclick="submitForm()">Plan My Trip ✈️</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 WanderLust. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('✈️ Start your journey at wanderlust.com/explore');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const destination = document.getElementById('destination').value;
+            const group = document.getElementById('group').value.trim();
+
+            if (!name || !email || !destination || !group) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Your adventure awaits! We\'ll send you a custom itinerary within 48 hours.';
+            document.getElementById('form-message').style.color = '#0891b2';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('destination').value = '';
+            document.getElementById('group').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Destination:', destination);
+            console.log('Group Size:', group);
+        }
+    </script>
+
+</body>
+</html>

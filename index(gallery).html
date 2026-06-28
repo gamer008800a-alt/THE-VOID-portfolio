@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE VOID | 20 Premium Landing Pages</title>
+    <meta name="description" content="Professional landing page templates for 20 different industries. Designed by Amir Abbas Abachi (THE VOID)." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #f0f0f0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.12);
+            color: #7c3aed;
+            padding: 6px 24px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            border: 1px solid rgba(124, 58, 237, 0.08);
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            font-size: 52px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .header h1 .highlight {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: #888;
+            font-size: 18px;
+            margin-top: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header .subtitle .fa {
+            color: #7c3aed;
+        }
+
+        /* ---------- BILINGUAL DIVIDER ---------- */
+        .lang-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 16px 0 8px;
+        }
+
+        .lang-divider .line {
+            flex: 1;
+            max-width: 80px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .lang-divider span {
+            font-size: 11px;
+            color: #444;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* ---------- DESIGNER INFO ---------- */
+        .designer-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .designer-info .name {
+            color: #7c3aed;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .designer-info .void {
+            color: #555;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .designer-info .divider-dot {
+            color: #333;
+        }
+
+        /* ---------- STATS ---------- */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .stats .stat-item {
+            text-align: center;
+        }
+
+        .stats .stat-item .number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #7c3aed;
+        }
+
+        .stats .stat-item .label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .stats .stat-item .label .fa {
+            color: #555;
+        }
+
+        /* ---------- GRID ---------- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: #161616;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.4s;
+            text-decoration: none;
+            color: #f0f0f0;
+            display: block;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #7c3aed;
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.06);
+        }
+
+        .card .preview {
+            background: #0a0a0a;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            border-bottom: 1px solid #222;
+            position: relative;
+        }
+
+        .card .preview .number-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(124, 58, 237, 0.08);
+            color: #7c3aed;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.04);
+            letter-spacing: 0.5px;
+        }
+
+        .card .info {
+            padding: 20px;
+        }
+
+        .card .info .name-en {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .card .info .name-fa {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+            direction: rtl;
+            display: inline-block;
+        }
+
+        .card .info .industry {
+            font-size: 12px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .card .info .industry .fa {
+            color: #555;
+        }
+
+        .card .info .template {
+            font-size: 11px;
+            color: #444;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .card .info .sticker {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.06);
+            color: #7c3aed;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 20px;
+            margin-top: 8px;
+            border: 1px solid rgba(124, 58, 237, 0.04);
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- CTA SECTION ---------- */
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 50px 30px;
+            background: #161616;
+            border-radius: 16px;
+            border: 1px solid #222;
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .cta-section h2 span {
+            color: #7c3aed;
+        }
+
+        .cta-section p {
+            color: #888;
+            font-size: 16px;
+            margin-top: 8px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .cta-section .btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            border: none;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.4s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-section .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .cta-section .btn-secondary {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.06);
+            color: #f0f0f0;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.4s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-section .btn-secondary:hover {
+            border-color: rgba(124, 58, 237, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #444;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            padding-top: 30px;
+        }
+
+        .footer .designer {
+            color: #7c3aed;
+            font-weight: 700;
+        }
+
+        .footer .void {
+            color: #333;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .footer .footer-links a {
+            color: #555;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .footer .footer-links a:hover {
+            color: #7c3aed;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .card .preview {
+                height: 120px;
+                font-size: 36px;
+            }
+            .card .info {
+                padding: 14px;
+            }
+            .card .info .name-en {
+                font-size: 14px;
+            }
+            .stats {
+                gap: 20px;
+            }
+            .stats .stat-item .number {
+                font-size: 22px;
+            }
+            .cta-section {
+                padding: 30px 20px;
+            }
+            .cta-section h2 {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .card .preview {
+                height: 90px;
+                font-size: 28px;
+            }
+            .card .info .name-en {
+                font-size: 12px;
+            }
+            .card .info .name-fa {
+                font-size: 11px;
+            }
+            .card .info .industry {
+                font-size: 10px;
+            }
+            .card .info .sticker {
+                font-size: 8px;
+                padding: 1px 10px;
+            }
+            .cta-section .btn-primary,
+            .cta-section .btn-secondary {
+                padding: 12px 24px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ========== HEADER ========== -->
+        <div class="header">
+            <div class="badge">✦ 20 Premium Templates</div>
+
+            <h1>
+                <span class="highlight">THE VOID</span>
+                <span style="color:#666;font-weight:400;">Portfolio</span>
+            </h1>
+
+            <div class="lang-divider">
+                <span class="line"></span>
+                <span>EN • FA</span>
+                <span class="line"></span>
+            </div>
+
+            <p class="subtitle">
+                Professional landing page templates for <span class="fa">20</span> different industries.
+                <br />
+                <span style="color:#555;font-size:15px;">
+                    قالب‌های حرفه‌ای لندینگ پیج برای <span style="color:#7c3aed;">۲۰</span> صنعت مختلف
+                </span>
+            </p>
+
+            <div class="designer-info">
+                <span class="name">Amir Abbas Abachi</span>
+                <span class="divider-dot">•</span>
+                <span class="void">✦ THE VOID ✦</span>
+                <span class="divider-dot">•</span>
+                <span style="color:#555;font-size:13px;">Web Designer & Developer</span>
+            </div>
+        </div>
+
+        <!-- ========== STATS ========== -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="number">20</div>
+                <div class="label">Templates / قالب</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">10</div>
+                <div class="label">Industries / صنعت</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">5</div>
+                <div class="label">Design Styles / سبک طراحی</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">100%</div>
+                <div class="label">Responsive / ریسپانسیو</div>
+            </div>
+        </div>
+
+        <!-- ========== GRID ========== -->
+        <div class="grid">
+
+            <!-- ===== Template 01 ===== -->
+            <a href="index1.html" class="card">
+                <div class="preview">
+                    🏋️
+                    <span class="number-tag">#01</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">FuryFit</div>
+                    <div class="name-fa">ورزش / بدنسازی</div>
+                    <div class="industry">Sports / Gym</div>
+                    <div class="template">Template-01 • Minimal</div>
+                    <span class="sticker">Red + Black</span>
+                </div>
+            </a>
+
+            <a href="index2.html" class="card">
+                <div class="preview">
+                    🌿
+                    <span class="number-tag">#02</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">GreenBite</div>
+                    <div class="name-fa">کافه / رستوران</div>
+                    <div class="industry">Cafe / Restaurant</div>
+                    <div class="template">Template-01 • Minimal</div>
+                    <span class="sticker">Green + Cream</span>
+                </div>
+            </a>
+
+            <a href="index3.html" class="card">
+                <div class="preview">
+                    📚
+                    <span class="number-tag">#03</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">BookNest</div>
+                    <div class="name-fa">کتاب‌فروشی</div>
+                    <div class="industry">Bookstore</div>
+                    <div class="template">Template-01 • Minimal</div>
+                    <span class="sticker">Brown + Cream</span>
+                </div>
+            </a>
+
+            <a href="index4.html" class="card">
+                <div class="preview">
+                    🐾
+                    <span class="number-tag">#04</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">PetPal</div>
+                    <div class="name-fa">حیوانات خانگی</div>
+                    <div class="industry">Pet Shop</div>
+                    <div class="template">Template-01 • Minimal</div>
+                    <span class="sticker">Orange + Cream</span>
+                </div>
+            </a>
+
+            <!-- ===== Template 02 ===== -->
+            <a href="index5.html" class="card">
+                <div class="preview">
+                    🍽️
+                    <span class="number-tag">#05</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">TasteBud</div>
+                    <div class="name-fa">رستوران</div>
+                    <div class="industry">Restaurant</div>
+                    <div class="template">Template-02 • Modern</div>
+                    <span class="sticker">Orange</span>
+                </div>
+            </a>
+
+            <a href="index6.html" class="card">
+                <div class="preview">
+                    🌍
+                    <span class="number-tag">#06</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">LinguaHub</div>
+                    <div class="name-fa">آموزشگاه زبان</div>
+                    <div class="industry">Language Academy</div>
+                    <div class="template">Template-02 • Modern</div>
+                    <span class="sticker">Purple</span>
+                </div>
+            </a>
+
+            <a href="index7.html" class="card">
+                <div class="preview">
+                    👗
+                    <span class="number-tag">#07</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">VogueWear</div>
+                    <div class="name-fa">فروشگاه لباس</div>
+                    <div class="industry">Fashion Store</div>
+                    <div class="template">Template-02 • Modern</div>
+                    <span class="sticker">Pink</span>
+                </div>
+            </a>
+
+            <a href="index8.html" class="card">
+                <div class="preview">
+                    ✈️
+                    <span class="number-tag">#08</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">WanderLust</div>
+                    <div class="name-fa">مسافرت</div>
+                    <div class="industry">Travel Agency</div>
+                    <div class="template">Template-02 • Modern</div>
+                    <span class="sticker">Cyan</span>
+                </div>
+            </a>
+
+            <!-- ===== Template 03 ===== -->
+            <a href="index9.html" class="card">
+                <div class="preview">
+                    🏎️
+                    <span class="number-tag">#09</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">AutoDrive</div>
+                    <div class="name-fa">خودرو</div>
+                    <div class="industry">Automotive</div>
+                    <div class="template">Template-03 • Aggressive</div>
+                    <span class="sticker">Neon Red</span>
+                </div>
+            </a>
+
+            <a href="index10.html" class="card">
+                <div class="preview">
+                    🚀
+                    <span class="number-tag">#10</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">TechNova</div>
+                    <div class="name-fa">تکنولوژی</div>
+                    <div class="industry">Technology</div>
+                    <div class="template">Template-03 • Aggressive</div>
+                    <span class="sticker">Cyber Blue</span>
+                </div>
+            </a>
+
+            <a href="index11.html" class="card">
+                <div class="preview">
+                    🎮
+                    <span class="number-tag">#11</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">GameOn</div>
+                    <div class="name-fa">بازی</div>
+                    <div class="industry">Gaming</div>
+                    <div class="template">Template-03 • Aggressive</div>
+                    <span class="sticker">Neon Purple</span>
+                </div>
+            </a>
+
+            <a href="index12.html" class="card">
+                <div class="preview">
+                    ⚡
+                    <span class="number-tag">#12</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">PowerGrid</div>
+                    <div class="name-fa">انرژی</div>
+                    <div class="industry">Energy</div>
+                    <div class="template">Template-03 • Aggressive</div>
+                    <span class="sticker">Neon Green</span>
+                </div>
+            </a>
+
+            <!-- ===== Template 04 ===== -->
+            <a href="index13.html" class="card">
+                <div class="preview">
+                    🏨
+                    <span class="number-tag">#13</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">StayEase</div>
+                    <div class="name-fa">هتل</div>
+                    <div class="industry">Hotel</div>
+                    <div class="template">Template-04 • Luxury</div>
+                    <span class="sticker">Gold + Navy</span>
+                </div>
+            </a>
+
+            <a href="index14.html" class="card">
+                <div class="preview">
+                    💎
+                    <span class="number-tag">#14</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">LuxeGems</div>
+                    <div class="name-fa">جواهرات</div>
+                    <div class="industry">Jewelry</div>
+                    <div class="template">Template-04 • Luxury</div>
+                    <span class="sticker">Gold + Black</span>
+                </div>
+            </a>
+
+            <a href="index15.html" class="card">
+                <div class="preview">
+                    🏛️
+                    <span class="number-tag">#15</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">EstatePro</div>
+                    <div class="name-fa">املاک</div>
+                    <div class="industry">Real Estate</div>
+                    <div class="template">Template-04 • Luxury</div>
+                    <span class="sticker">Gold + Navy Blue</span>
+                </div>
+            </a>
+
+            <a href="index16.html" class="card">
+                <div class="preview">
+                    👑
+                    <span class="number-tag">#16</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">HauteCouture</div>
+                    <div class="name-fa">مد</div>
+                    <div class="industry">Luxury Fashion</div>
+                    <div class="template">Template-04 • Luxury</div>
+                    <span class="sticker">Rose Gold + Pink</span>
+                </div>
+            </a>
+
+            <!-- ===== Template 05 ===== -->
+            <a href="index17.html" class="card">
+                <div class="preview">
+                    🚀
+                    <span class="number-tag">#17</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">LaunchPad</div>
+                    <div class="name-fa">استارتاپ</div>
+                    <div class="industry">Startup</div>
+                    <div class="template">Template-05 • Dynamic</div>
+                    <span class="sticker">Purple + Cyan</span>
+                </div>
+            </a>
+
+            <a href="index18.html" class="card">
+                <div class="preview">
+                    🎯
+                    <span class="number-tag">#18</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">DigitalAce</div>
+                    <div class="name-fa">آژانس دیجیتال</div>
+                    <div class="industry">Digital Agency</div>
+                    <div class="template">Template-05 • Dynamic</div>
+                    <span class="sticker">Orange + Black</span>
+                </div>
+            </a>
+
+            <a href="index19.html" class="card">
+                <div class="preview">
+                    🌿
+                    <span class="number-tag">#19</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">ConsultPro</div>
+                    <div class="name-fa">مشاوره</div>
+                    <div class="industry">Consulting</div>
+                    <div class="template">Template-05 • Dynamic</div>
+                    <span class="sticker">Emerald Green</span>
+                </div>
+            </a>
+
+            <a href="index20.html" class="card">
+                <div class="preview">
+                    ✦
+                    <span class="number-tag">#20</span>
+                </div>
+                <div class="info">
+                    <div class="name-en">BrandCraft</div>
+                    <div class="name-fa">برندینگ</div>
+                    <div class="industry">Branding</div>
+                    <div class="template">Template-05 • Dynamic</div>
+                    <span class="sticker">Pink + Purple</span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- ========== CTA SECTION ========== -->
+        <div class="cta-section">
+            <h2>
+                Need a <span>Custom</span> Landing Page?
+            </h2>
+            <p>
+                I can create a unique design tailored to your brand.
+                <br />
+                <span style="color:#555;font-size:14px;">
+                    می‌توانم یک طراحی اختصاصی برای برند شما ایجاد کنم.
+                </span>
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:thevoid.design@email.com" class="btn-primary">
+                    📧 Hire Me / استخدام
+                </a>
+                <a href="#" class="btn-secondary">
+                    📱 +1 (555) 000-0000
+                </a>
+            </div>
+        </div>
+
+        <!-- ========== FOOTER ========== -->
+        <div class="footer">
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void">✦ THE VOID ✦</span>
+            </p>
+            <p style="margin-top:4px;color:#333;font-size:12px;">
+                20 Premium Templates • 10 Industries • 5 Design Styles
+                <br />
+                <span style="color:#222;">۲۰ قالب حرفه‌ای • ۱۰ صنعت • ۵ سبک طراحی</span>
+            </p>
+            <div class="footer-links">
+                <a href="mailto:thevoid.design@email.com">Email</a>
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

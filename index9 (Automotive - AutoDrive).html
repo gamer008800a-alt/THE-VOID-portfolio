@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoDrive - Performance Cars | THE VOID</title>
+    <!-- فونت اختصاصی خودرو: Orbitron + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- GLOW EFFECTS (Neon Red) ---------- */
+        .glow-red {
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 60px rgba(255, 0, 0, 0.3);
+        }
+        .glow-border-red {
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.15), inset 0 0 30px rgba(255, 0, 0, 0.05);
+        }
+
+        /* ---------- HEADER (Glassmorphism) ---------- */
+        header {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 0;
+            border-bottom: 2px solid rgba(255, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.05);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .logo span {
+            color: #ff0000;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+        }
+        .logo .void {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            color: #444;
+            font-weight: 400;
+            letter-spacing: 4px;
+            display: block;
+            margin-top: -2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        nav a {
+            color: #888;
+            text-decoration: none;
+            padding: 8px 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: 0.3s;
+            position: relative;
+        }
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #ff0000;
+            transition: 0.3s;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        nav a:hover::before {
+            width: 60%;
+        }
+        nav a.active {
+            color: #ff0000;
+        }
+        nav a.active::before {
+            width: 60%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff0000;
+            color: #ff0000;
+            padding: 10px 28px;
+            border-radius: 4px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+        .btn-outline:hover {
+            background: #ff0000;
+            color: #0a0a0a;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
+        }
+
+        /* ---------- HERO (دکمه چپ + عکس راست) ---------- */
+        .hero {
+            padding: 80px 0 60px;
+            background: radial-gradient(ellipse at 70% 30%, rgba(255, 0, 0, 0.06), transparent 60%),
+                        radial-gradient(ellipse at 30% 70%, rgba(255, 0, 0, 0.03), transparent 50%),
+                        #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.04), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text .badge {
+            background: rgba(255, 0, 0, 0.12);
+            color: #ff0000;
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 2px;
+            font-family: 'Orbitron', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 0, 0, 0.15);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.05);
+        }
+
+        .hero-text h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        .hero-text h1 span {
+            color: #ff0000;
+            text-shadow: 0 0 40px rgba(255, 0, 0, 0.4), 0 0 80px rgba(255, 0, 0, 0.15);
+        }
+
+        .hero-text p {
+            color: #777;
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 480px;
+            margin-bottom: 32px;
+        }
+
+        .hero-text .highlight {
+            color: #ff0000;
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            border: none;
+            color: #fff;
+            padding: 16px 48px;
+            border-radius: 4px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .btn-primary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 70px rgba(255, 0, 0, 0.5);
+        }
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .hero-image {
+            background: radial-gradient(ellipse at center, rgba(255, 0, 0, 0.05), transparent 70%);
+            border-radius: 4px;
+            padding: 20px;
+            border: 1px solid rgba(255, 0, 0, 0.06);
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(255, 0, 0, 0.05);
+            filter: grayscale(20%) contrast(110%);
+            transition: 0.5s;
+        }
+        .hero-image img:hover {
+            filter: grayscale(0%) contrast(110%);
+            transform: scale(1.01);
+        }
+
+        /* ---------- STATS (Aggressive) ---------- */
+        .stats {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-family: 'Orbitron', monospace;
+            font-size: 38px;
+            font-weight: 900;
+            color: #ff0000;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+        }
+        .stat-item .label {
+            font-size: 12px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ---------- VEHICLE GRID (4 کارت با استیکر جدید) ---------- */
+        .vehicles {
+            padding: 80px 0;
+            background: #0d0d0d;
+        }
+
+        .vehicles .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .vehicles .section-header h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .vehicles .section-header h2 span {
+            color: #ff0000;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+        .vehicles .section-header p {
+            color: #555;
+            font-size: 15px;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .vehicle-item {
+            background: #111111;
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+        /* استیکر جدید - گوشه بالا چپ */
+        .vehicle-item .sticker {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #ff0000;
+            color: #0a0a0a;
+            font-family: 'Orbitron', monospace;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            border-radius: 2px;
+        }
+        .vehicle-item .sticker.hot {
+            background: #ff4400;
+        }
+        .vehicle-item .sticker.limited {
+            background: #ffaa00;
+            color: #0a0a0a;
+        }
+
+        .vehicle-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), transparent, rgba(255, 0, 0, 0.2));
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .vehicle-item:hover::before {
+            opacity: 1;
+        }
+        .vehicle-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.05);
+        }
+        .vehicle-item .icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .vehicle-item h4 {
+            font-family: 'Orbitron', monospace;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .vehicle-item .price {
+            font-family: 'Orbitron', monospace;
+            font-size: 18px;
+            font-weight: 800;
+            color: #ff0000;
+            margin-top: 8px;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.15);
+        }
+        .vehicle-item .desc {
+            font-size: 12px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        /* ---------- FEATURES (4 کارت با استیکر) ---------- */
+        .features {
+            padding: 80px 0;
+            background: #0a0a0a;
+        }
+
+        .features .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .features .section-header h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .features .section-header h2 span {
+            color: #ff0000;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+        .features .section-header p {
+            color: #555;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: #111111;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: 0.4s;
+            position: relative;
+        }
+        .feature-item .sticker {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 0, 0, 0.12);
+            color: #ff0000;
+            font-family: 'Orbitron', monospace;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            border-radius: 2px;
+        }
+        .feature-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: #ff0000;
+            transition: 0.4s;
+            transform: translateX(-50%);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+        .feature-item:hover::after {
+            width: 80%;
+        }
+        .feature-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 0, 0, 0.1);
+        }
+        .feature-item .icon {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .feature-item h4 {
+            font-family: 'Orbitron', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .feature-item p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        /* ---------- TESTIMONIAL (Dark with neon border) ---------- */
+        .testimonial {
+            background: #111111;
+            padding: 50px 40px;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+            margin: 40px 0 60px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.02);
+        }
+
+        .testimonial blockquote {
+            font-family: 'Orbitron', monospace;
+            font-size: 22px;
+            font-style: italic;
+            color: #ddd;
+            max-width: 700px;
+            margin: 0 auto 16px;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+        .testimonial blockquote span {
+            color: #ff0000;
+        }
+
+        .testimonial .author {
+            font-weight: 700;
+            color: #ff0000;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- CONTACT (Aggressive) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #0d0d0d;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+            background: #111111;
+            padding: 50px;
+            border: 1px solid rgba(255, 0, 0, 0.06);
+        }
+
+        .contact-info h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contact-info h3 span {
+            color: #ff0000;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+        }
+        .contact-info p {
+            color: #555;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+            font-size: 14px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #777;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.5px;
+        }
+        .contact-info .detail .emoji {
+            font-size: 18px;
+            color: #ff0000;
+        }
+
+        .contact-form input,
+        .contact-form select {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #0a0a0a;
+            color: #f0f0f0;
+            font-size: 14px;
+            transition: 0.3s;
+            border-radius: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: #ff0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.05);
+        }
+
+        .contact-form select {
+            appearance: none;
+            cursor: pointer;
+            color: #888;
+        }
+        .contact-form select option {
+            background: #0a0a0a;
+            color: #f0f0f0;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            border: none;
+            color: #fff;
+            font-family: 'Orbitron', monospace;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.15);
+        }
+        .contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 70px rgba(255, 0, 0, 0.3);
+        }
+
+        #form-message {
+            margin-top: 16px;
+            color: #ff0000;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- FOOTER (Dark with neon lines) ---------- */
+        footer {
+            background: #060606;
+            padding: 40px 0;
+            text-align: center;
+            color: #444;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 0, 0, 0.05);
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+        }
+
+        footer .designer {
+            color: #ff0000;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        footer .void-brand {
+            color: #333;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .vehicle-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                padding: 6px 14px;
+                font-size: 10px;
+            }
+            .vehicle-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .stat-item .number {
+                font-size: 28px;
+            }
+            .testimonial blockquote {
+                font-size: 18px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 24px;
+            }
+            .logo {
+                font-size: 20px;
+            }
+            .vehicle-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .hero-text .badge {
+                font-size: 9px;
+                padding: 4px 16px;
+            }
+            .btn-primary {
+                padding: 14px 30px;
+                font-size: 12px;
+            }
+            .vehicle-item .sticker {
+                font-size: 7px;
+                padding: 2px 10px;
+                top: 8px;
+                left: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                Auto<span>Drive</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Models</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Test Drive</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO (دکمه چپ + عکس راست) ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">⚡ Performance Redefined</div>
+                <h1>Unleash The <span>Beast</span></h1>
+                <p>
+                    <span class="highlight">700 HP</span> of raw power. 0-60 in 
+                    <span class="highlight">2.8 seconds</span>. Engineered for those who demand 
+                    the extraordinary.
+                </p>
+                <button class="btn-primary" onclick="showAlert()">Configure Yours</button>
+            </div>
+            <div class="hero-image">
+                <img src="autodrive.jpg" alt="AutoDrive Sports Car" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <div class="number">700</div>
+                <div class="label">Horsepower</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">2.8s</div>
+                <div class="label">0-60 MPH</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">200+</div>
+                <div class="label">Dealerships</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">4.9⭐</div>
+                <div class="label">Owner Rating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== VEHICLE GRID (4 کارت با استیکر جدید) ========== -->
+    <section class="vehicles">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our <span>Fleet</span></h2>
+                <p>Choose your weapon</p>
+            </div>
+            <div class="vehicle-grid">
+                <div class="vehicle-item">
+                    <span class="sticker hot">🔥 Hot</span>
+                    <span class="icon">🏎️</span>
+                    <h4>Viper GT</h4>
+                    <div class="desc">V8 Twin-Turbo</div>
+                    <div class="price">$185K</div>
+                </div>
+                <div class="vehicle-item">
+                    <span class="sticker">⚡ New</span>
+                    <span class="icon">🚗</span>
+                    <h4>Phantom X</h4>
+                    <div class="desc">Electric AWD</div>
+                    <div class="price">$210K</div>
+                </div>
+                <div class="vehicle-item">
+                    <span class="sticker">🏆 Top</span>
+                    <span class="icon">🚙</span>
+                    <h4>Raptor S</h4>
+                    <div class="desc">Off-Road V6</div>
+                    <div class="price">$95K</div>
+                </div>
+                <div class="vehicle-item">
+                    <span class="sticker limited">⭐ Limited</span>
+                    <span class="icon">🏁</span>
+                    <h4>Strike R</h4>
+                    <div class="desc">Track Edition</div>
+                    <div class="price">$275K</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES (4 کارت با استیکر) ========== -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why <span>AutoDrive</span>?</h2>
+                <p>Built for the relentless</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="sticker">⚡</span>
+                    <span class="icon">⚡</span>
+                    <h4>Performance</h4>
+                    <p>Unmatched power and precision engineering.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="sticker">🛡️</span>
+                    <span class="icon">🛡️</span>
+                    <h4>Safety First</h4>
+                    <p>Advanced safety systems protecting what matters.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="sticker">🔧</span>
+                    <span class="icon">🔧</span>
+                    <h4>Lifetime Service</h4>
+                    <p>Free maintenance for the life of your vehicle.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="sticker">🌍</span>
+                    <span class="icon">🌍</span>
+                    <h4>Global Warranty</h4>
+                    <p>Coverage in 50+ countries worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <div class="container">
+        <div class="testimonial">
+            <blockquote>
+                “This car is <span>pure adrenaline</span>. Every drive feels like a race.”
+            </blockquote>
+            <p class="author">— James K., Viper GT Owner</p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Request a <span>Test Drive</span></h3>
+                    <p>Feel the power behind the wheel. Book your test drive today and experience the thrill.</p>
+                    <div class="detail">
+                        <span class="emoji">📧</span>
+                        sales@autodrive.com
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📞</span>
+                        +1 800 555 0303
+                    </div>
+                    <div class="detail">
+                        <span class="emoji">📍</span>
+                        500+ Dealerships Nationwide
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <select id="model">
+                        <option value="">Select Model</option>
+                        <option value="Viper GT">Viper GT</option>
+                        <option value="Phantom X">Phantom X</option>
+                        <option value="Raptor S">Raptor S</option>
+                        <option value="Strike R">Strike R</option>
+                    </select>
+                    <input type="text" id="zip" placeholder="ZIP Code" />
+                    <button onclick="submitForm()">Book Test Drive 🏁</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AutoDrive. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('🏁 Configure your dream car at autodrive.com/configurator');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const model = document.getElementById('model').value;
+            const zip = document.getElementById('zip').value.trim();
+
+            if (!name || !email || !model || !zip) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Test drive confirmed! We\'ll contact you within 24 hours.';
+            document.getElementById('form-message').style.color = '#ff0000';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('model').value = '';
+            document.getElementById('zip').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Model:', model);
+            console.log('ZIP:', zip);
+        }
+    </script>
+
+</body>
+</html>

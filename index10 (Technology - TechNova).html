@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechNova - Next Gen Tech | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #060a0f;
+            color: #e8edf2;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (Clipped / Diagonal) ---------- */
+        header {
+            background: #0b1119;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+            margin-bottom: -20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0 30px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo .void {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            color: #445;
+            font-weight: 400;
+            letter-spacing: 4px;
+            display: block;
+            margin-top: -2px;
+            -webkit-text-fill-color: #445;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #8899aa;
+            text-decoration: none;
+            padding: 8px 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: rgba(0, 212, 255, 0.08);
+            color: #00d4ff;
+        }
+        nav a.active {
+            background: rgba(0, 212, 255, 0.12);
+            color: #00d4ff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #00d4ff;
+            color: #00d4ff;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #00d4ff;
+            color: #060a0f;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+        }
+
+        /* ---------- HERO (با پس‌زمینه موج‌دار) ---------- */
+        .hero {
+            padding: 40px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,0 C300,100 600,20 900,80 C1050,110 1150,60 1200,40 L1200,120 L0,120 Z' fill='%230b1119'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 255, 0.08);
+            color: #00d4ff;
+            padding: 6px 20px 6px 16px;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        .hero-text .badge .dot {
+            width: 6px;
+            height: 6px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 54px;
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #00d4ff, #0077ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            color: #8899aa;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0077ff);
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 80px rgba(0, 212, 255, 0.2);
+        }
+
+        /* Hero Image - با افکت سایبر */
+        .hero-image {
+            position: relative;
+        }
+        .hero-image .glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.04), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.05);
+        }
+
+        /* ---------- CHART SECTION (جایگزین ۴ کارت) ---------- */
+        .chart-section {
+            padding: 80px 0 60px;
+            background: #0b1119;
+            position: relative;
+        }
+
+        .chart-section .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .chart-section .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .chart-section .section-header h2 span {
+            color: #00d4ff;
+        }
+        .chart-section .section-header p {
+            color: #667;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .chart-wrapper {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .chart-visual {
+            background: #060a0f;
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.05);
+            position: relative;
+        }
+
+        .chart-visual .chart-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #8899aa;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* نمودار خطی ساده با CSS */
+        .line-chart {
+            display: flex;
+            align-items: flex-end;
+            height: 180px;
+            gap: 20px;
+            padding: 0 10px;
+            position: relative;
+        }
+        .line-chart .bar {
+            flex: 1;
+            background: linear-gradient(180deg, #00d4ff, #0077ff);
+            border-radius: 4px 4px 0 0;
+            height: 40%;
+            transition: 0.5s;
+            position: relative;
+            min-height: 20px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);
+        }
+        .line-chart .bar:nth-child(1) { height: 45%; }
+        .line-chart .bar:nth-child(2) { height: 65%; }
+        .line-chart .bar:nth-child(3) { height: 35%; }
+        .line-chart .bar:nth-child(4) { height: 80%; }
+        .line-chart .bar:nth-child(5) { height: 55%; }
+        .line-chart .bar:nth-child(6) { height: 90%; }
+        .line-chart .bar:nth-child(7) { height: 70%; }
+
+        .line-chart .bar .label {
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #556;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .line-chart .bar .value {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #00d4ff;
+            font-weight: 600;
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .line-chart .bar:hover .value {
+            opacity: 1;
+        }
+        .line-chart .bar:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .chart-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .chart-stat-item {
+            background: #060a0f;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+        .chart-stat-item .number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+        .chart-stat-item .label {
+            font-size: 12px;
+            color: #667;
+            margin-top: 4px;
+        }
+
+        /* ---------- TESTIMONIAL (اسلایدر/کارت عمودی) ---------- */
+        .testimonials {
+            padding: 80px 0;
+            background: #060a0f;
+        }
+
+        .testimonials .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .testimonials .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .testimonials .section-header h2 span {
+            color: #00d4ff;
+        }
+        .testimonials .section-header p {
+            color: #667;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #0b1119;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 212, 255, 0.04);
+            transition: 0.4s;
+            position: relative;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(0, 212, 255, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .testimonial-card .quote {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #aabbcc;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .testimonial-card .quote::before {
+            content: '"';
+            color: #00d4ff;
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.5;
+        }
+        .testimonial-card .quote::after {
+            content: '"';
+            color: #00d4ff;
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.5;
+        }
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-card .author .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0077ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+        }
+        .testimonial-card .author .name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .testimonial-card .author .role {
+            font-size: 12px;
+            color: #667;
+        }
+        .testimonial-card .rating {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- CTA BANNER (جدید) ---------- */
+        .cta-banner {
+            background: linear-gradient(135deg, #0b1119, #111a26);
+            padding: 60px 0;
+            border-top: 1px solid rgba(0, 212, 255, 0.04);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.04);
+        }
+
+        .cta-banner .cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .cta-banner .cta-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .cta-banner .cta-content h3 span {
+            color: #00d4ff;
+        }
+        .cta-banner .cta-content p {
+            color: #8899aa;
+        }
+        .cta-banner .cta-content .btn-cta {
+            background: transparent;
+            border: 1.5px solid #00d4ff;
+            color: #00d4ff;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cta-banner .cta-content .btn-cta:hover {
+            background: #00d4ff;
+            color: #060a0f;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.15);
+        }
+
+        /* ---------- CONTACT (ساده) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #060a0f;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+            background: #0b1119;
+            padding: 50px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 212, 255, 0.04);
+        }
+
+        .contact-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+        }
+        .contact-info h3 span {
+            color: #00d4ff;
+        }
+        .contact-info p {
+            color: #667;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+            font-size: 14px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #8899aa;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            background: #060a0f;
+            color: #e8edf2;
+            font-size: 14px;
+            transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.03);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #00d4ff, #0077ff);
+            border: none;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+        }
+        #form-message {
+            margin-top: 14px;
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ---------- FOOTER (متفاوت) ---------- */
+        footer {
+            background: #05080c;
+            padding: 40px 0;
+            text-align: center;
+            color: #445;
+            font-size: 13px;
+            border-top: 1px solid rgba(0, 212, 255, 0.02);
+            position: relative;
+        }
+        footer .designer {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+        footer .void-brand {
+            color: #334;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a {
+            color: #556;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        footer .footer-links a:hover {
+            color: #00d4ff;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .chart-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .cta-banner .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            nav a {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .chart-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .line-chart {
+                height: 130px;
+                gap: 12px;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+            .chart-stat-item .number {
+                font-size: 24px;
+            }
+            .cta-banner .cta-content h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER (Clipped) ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                Tech<span>Nova</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Solutions</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Get Started</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">
+                    <span class="dot"></span>
+                    AI-Powered Solutions
+                </div>
+                <h1>Build The <span>Future</span> Today</h1>
+                <p>Next-generation technology for businesses that want to lead, not follow.</p>
+                <button class="btn-primary" onclick="showAlert()">Start Building</button>
+            </div>
+            <div class="hero-image">
+                <div class="glow-ring"></div>
+                <img src="technova.jpg" alt="TechNova" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CHART SECTION (به جای ۴ کارت) ========== -->
+    <section class="chart-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Performance <span>Metrics</span></h2>
+                <p>Real-time data from our AI systems</p>
+            </div>
+            <div class="chart-wrapper">
+                <div class="chart-visual">
+                    <div class="chart-title">📊 System Performance (Last 7 Days)</div>
+                    <div class="line-chart">
+                        <div class="bar">
+                            <span class="value">45%</span>
+                            <span class="label">Mon</span>
+                        </div>
+                        <div class="bar">
+                            <span class="value">65%</span>
+                            <span class="label">Tue</span>
+                        </div>
+                        <div class="bar">
+                            <span class="value">35%</span>
+                            <span class="label">Wed</span>
+                        </div>
+                        <div class="bar">
+                            <span class="value">80%</span>
+                            <span class="label">Thu</span>
+                        </div>
+                        <div class="bar">
+                            <span class="value">55%</span>
+                            <span class="label">Fri</span>
+                        </div>
+                        <div class="bar">
+                            <span class="value">90%</span>
+                            <span class="label">Sat</span>
+                        </div>
+                        <div class="bar">
+                            <span class="value">70%</span>
+                            <span class="label">Sun</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-stats">
+                    <div class="chart-stat-item">
+                        <div class="number">99.8%</div>
+                        <div class="label">Uptime</div>
+                    </div>
+                    <div class="chart-stat-item">
+                        <div class="number">2.4M</div>
+                        <div class="label">Requests/Day</div>
+                    </div>
+                    <div class="chart-stat-item">
+                        <div class="number">120ms</div>
+                        <div class="label">Avg Response</div>
+                    </div>
+                    <div class="chart-stat-item">
+                        <div class="number">4.9⭐</div>
+                        <div class="label">User Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS (کارت عمودی) ========== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our <span>Clients</span> Say</h2>
+                <p>Real feedback from real partners</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">TechNova transformed our infrastructure. We scaled 3x in just months.</div>
+                    <div class="author">
+                        <div class="avatar">JD</div>
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">CTO, CloudCorp</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">The AI solutions are incredible. Our efficiency has never been higher.</div>
+                    <div class="author">
+                        <div class="avatar">SM</div>
+                        <div>
+                            <div class="name">Sarah Miller</div>
+                            <div class="role">VP Engineering</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">Best tech partner we've ever had. Reliable, innovative, and fast.</div>
+                    <div class="author">
+                        <div class="avatar">AK</div>
+                        <div>
+                            <div class="name">Alex Kim</div>
+                            <div class="role">CEO, StartupX</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <h3>Ready to <span>Innovate</span>?</h3>
+                    <p>Join 5,000+ companies using TechNova</p>
+                </div>
+                <button class="btn-cta" onclick="showAlert()">Contact Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get in <span>Touch</span></h3>
+                    <p>Let's talk about how we can help you build the future.</p>
+                    <div class="detail">📧 hello@technova.com</div>
+                    <div class="detail">📞 +1 800 555 0404</div>
+                    <div class="detail">📍 Global — Remote First</div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <input type="text" id="company" placeholder="Company Name" />
+                    <textarea id="message" placeholder="Tell us about your project..."></textarea>
+                    <button onclick="submitForm()">Send Message 🚀</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TechNova. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('🚀 Ready to innovate? Visit technova.com/contact');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !company || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Thanks! We\'ll respond within 24 hours.';
+            document.getElementById('form-message').style.color = '#00d4ff';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('company').value = '';
+            document.getElementById('message').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Company:', company);
+            console.log('Message:', message);
+        }
+    </script>
+
+</body>
+</html>

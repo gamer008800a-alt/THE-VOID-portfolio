@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FuryFit - Sportswear | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #0b0b0b;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            background: #0b0b0b;
+            padding: 18px 0;
+            border-bottom: 3px solid #e63946;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #e63946;
+        }
+        .logo .void {
+            font-size: 14px;
+            color: #666;
+            font-weight: 400;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: -4px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #e63946;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #e63946;
+            color: #e63946;
+            padding: 8px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #e63946;
+            color: #fff;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .badge {
+            background: #e63946;
+            color: #fff;
+            display: inline-block;
+            padding: 4px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-text h1 span {
+            color: #e63946;
+        }
+
+        .hero-text p {
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 500px;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            background: #e63946;
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(230, 57, 70, 0.6);
+            background: #c62836;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #e63946;
+            box-shadow: 0 30px 60px rgba(230, 57, 70, 0.15);
+        }
+
+        /* ---------- BENEFITS ---------- */
+        .benefits {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .benefits h2 {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .benefits h2 span {
+            color: #e63946;
+        }
+        .benefits .subtitle {
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .benefit-item {
+            background: #181818;
+            padding: 36px 24px;
+            border-radius: 20px;
+            flex: 1 1 220px;
+            border: 1px solid #2a2a2a;
+            transition: 0.3s;
+        }
+        .benefit-item:hover {
+            border-color: #e63946;
+            transform: translateY(-8px);
+        }
+        .benefit-item .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        .benefit-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .benefit-item p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ---------- TESTIMONIAL ---------- */
+        .testimonial {
+            background: #181818;
+            padding: 50px 40px;
+            border-radius: 40px;
+            margin: 20px 0 50px;
+            border-left: 6px solid #e63946;
+        }
+
+        .testimonial blockquote {
+            font-size: 22px;
+            font-style: italic;
+            color: #ddd;
+            max-width: 750px;
+            margin: 0 auto 16px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .testimonial .author {
+            text-align: center;
+            font-weight: 700;
+            color: #e63946;
+            font-size: 18px;
+        }
+
+        /* ---------- CONTACT ---------- */
+        .contact {
+            padding: 60px 0 50px;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 34px;
+            font-weight: 900;
+        }
+        .contact h2 span {
+            color: #e63946;
+        }
+        .contact .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 36px;
+        }
+
+        .contact-form {
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            border: 1px solid #333;
+            border-radius: 12px;
+            background: #111;
+            color: #fff;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #e63946;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 17px;
+            background: #e63946;
+            border: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background: #c62836;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+        }
+
+        #form-message {
+            text-align: center;
+            margin-top: 18px;
+            color: #4caf84;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            border-top: 1px solid #222;
+            padding: 35px 0;
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        footer .designer {
+            color: #e63946;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        footer .void-brand {
+            color: #888;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                margin: 0 14px;
+                font-size: 13px;
+            }
+            .hero-grid {
+                flex-direction: column-reverse;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                Fury<span>Fit</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Sign In</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">🔥 NEW COLLECTION 2026</div>
+                <h1>Built For <span>Warriors</span></h1>
+                <p>Premium sportswear engineered for maximum performance, comfort, and style. Train like a beast.</p>
+                <button class="btn-primary" onclick="showAlert()">Shop Now</button>
+            </div>
+            <div class="hero-image">
+                <!-- Download a gym/sport image from Pexels and name it 'furyfit.jpg' -->
+                <img src="furyfit.jpg" alt="FuryFit Sportswear" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BENEFITS ========== -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Why <span>FuryFit</span>?</h2>
+            <p class="subtitle">Designed for those who never quit</p>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="icon">💪</div>
+                    <h3>Pro Grade Fabric</h3>
+                    <p>Moisture-wicking, 4-way stretch material that moves with you.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🚀</div>
+                    <h3>Free Shipping</h3>
+                    <p>On all orders over $75. Delivered to your door in 3-5 days.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🛡️</div>
+                    <h3>Lifetime Guarantee</h3>
+                    <p>Not satisfied? We'll replace it or refund you. No questions asked.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <div class="container">
+        <div class="testimonial">
+            <blockquote>
+                “FuryFit changed my training game. The gear fits perfectly and lasts through every brutal session.”
+            </blockquote>
+            <p class="author">— Alex Rivera, CrossFit Coach</p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <h2>📩 Get a <span>Free</span> Consultation</h2>
+            <p class="subtitle">We'll help you find the perfect gear for your training</p>
+            <div class="contact-form">
+                <input type="text" id="name" placeholder="Full Name" />
+                <input type="email" id="email" placeholder="Email Address" />
+                <textarea id="message" placeholder="Tell us about your fitness goals..."></textarea>
+                <button onclick="submitForm()">Send Request</button>
+            </div>
+            <p id="form-message"></p>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FuryFit. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span> 
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('🔥 Thank you! Contact our support at support@furyfit.com to place your order.');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Thank you! We\'ll get back to you within 24 hours.';
+            document.getElementById('form-message').style.color = '#4caf84';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Message:', message || '(No message)');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxeGems - Fine Jewelry | THE VOID</title>
+    <!-- فونت‌های لوکس -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0808;
+            color: #e8ddd0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- LUXURY BACKGROUND ---------- */
+        .luxury-bg {
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.02), transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.02), transparent 50%),
+                #0a0808;
+        }
+
+        /* ---------- GOLD EFFECTS ---------- */
+        .gold-text {
+            color: #d4af37;
+        }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+        .gold-glow {
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.08), 0 0 80px rgba(212, 175, 55, 0.03);
+        }
+
+        /* ---------- HEADER (LOGO MIDDLE) ---------- */
+        header {
+            background: rgba(10, 8, 8, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .logo span {
+            color: #d4af37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+        }
+        .logo .void {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            color: #665544;
+            font-weight: 400;
+            letter-spacing: 6px;
+            display: block;
+            margin-top: -4px;
+            text-transform: uppercase;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #998877;
+            text-decoration: none;
+            padding: 8px 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: 0.4s;
+            transform: translateX(-50%);
+        }
+        nav a:hover {
+            color: #d4af37;
+        }
+        nav a:hover::after {
+            width: 60%;
+        }
+        nav a.active {
+            color: #d4af37;
+        }
+        nav a.active::after {
+            width: 60%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            padding: 10px 32px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            border-radius: 30px;
+        }
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.04);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.02);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 60px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 70% 30%, rgba(212, 175, 55, 0.02), transparent 50%),
+                radial-gradient(ellipse at 30% 70%, rgba(212, 175, 55, 0.02), transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.04);
+            color: #d4af37;
+            padding: 6px 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+            margin-bottom: 20px;
+            border-radius: 30px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 54px;
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .hero-text h1 span {
+            color: #d4af37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.08);
+        }
+
+        .hero-text p {
+            font-family: 'Cormorant Garamond', serif;
+            color: #998877;
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 480px;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37, #b8962e);
+            border: none;
+            color: #0a0808;
+            padding: 16px 44px;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 60%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.08);
+        }
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            filter: saturate(0.8) contrast(1.05);
+            transition: 0.5s;
+        }
+        .hero-image img:hover {
+            filter: saturate(1) contrast(1.05);
+        }
+
+        /* ---------- GALLERY SECTION (جواهرات) ---------- */
+        .gallery-section {
+            padding: 80px 0;
+            background: #0a0808;
+            border-top: 1px solid rgba(212, 175, 55, 0.02);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.02);
+        }
+
+        .gallery-section .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .gallery-section .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .gallery-section .section-header h2 span {
+            color: #d4af37;
+        }
+        .gallery-section .section-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            color: #665544;
+            font-size: 17px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: #0a0808;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.5s;
+            position: relative;
+        }
+        .gallery-item:hover {
+            border-color: rgba(212, 175, 55, 0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.7) contrast(1.05);
+            transition: 0.5s;
+        }
+        .gallery-item:hover img {
+            filter: saturate(1) contrast(1.05);
+            transform: scale(1.01);
+        }
+
+        .gallery-item .info {
+            padding: 20px 24px 24px;
+            text-align: center;
+        }
+        .gallery-item .info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .gallery-item .info p {
+            font-family: 'Cormorant Garamond', serif;
+            color: #665544;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+        .gallery-item .gold-line {
+            width: 40px;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.08);
+            margin: 8px auto 0;
+        }
+
+        /* ---------- JEWELRY COLLECTION (CARDS LUXURY) ---------- */
+        .collection {
+            padding: 80px 0;
+            background: #0a0808;
+        }
+
+        .collection .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .collection .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .collection .section-header h2 span {
+            color: #d4af37;
+        }
+        .collection .section-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            color: #665544;
+            font-size: 17px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .collection-item {
+            background: #0a0808;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+            transition: 0.5s;
+            position: relative;
+        }
+        .collection-item::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.04), transparent);
+            transition: 0.4s;
+        }
+        .collection-item:hover::before {
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+        }
+        .collection-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212, 175, 55, 0.04);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .collection-item .icon {
+            font-size: 44px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .collection-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .collection-item .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-top: 8px;
+        }
+        .collection-item .desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            color: #665544;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+        .collection-item .sticker {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.04);
+            color: #d4af37;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            margin-top: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+            border-radius: 30px;
+        }
+
+        /* ---------- TESTIMONIALS (LUXURY) ---------- */
+        .testimonials {
+            padding: 80px 0;
+            background: #0a0808;
+            border-top: 1px solid rgba(212, 175, 55, 0.02);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.02);
+        }
+
+        .testimonials .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .testimonials .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .testimonials .section-header h2 span {
+            color: #d4af37;
+        }
+        .testimonials .section-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            color: #665544;
+            font-size: 17px;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #0a0808;
+            padding: 32px 28px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            transition: 0.5s;
+            position: relative;
+        }
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.04), transparent);
+            transition: 0.4s;
+        }
+        .testimonial-card:hover::after {
+            left: 0;
+            right: 0;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.04);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-card .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #998877;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .testimonial-card .quote::before {
+            content: '"';
+            color: #d4af37;
+            font-size: 32px;
+            font-weight: 700;
+            opacity: 0.1;
+            margin-right: 4px;
+        }
+        .testimonial-card .quote::after {
+            content: '"';
+            color: #d4af37;
+            font-size: 32px;
+            font-weight: 700;
+            opacity: 0.1;
+            margin-left: 4px;
+        }
+
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-card .author .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.02), rgba(212, 175, 55, 0.01));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+        }
+        .testimonial-card .author .name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        .testimonial-card .author .role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            color: #665544;
+        }
+        .testimonial-card .rating {
+            color: #d4af37;
+            font-size: 14px;
+            margin-top: 12px;
+            letter-spacing: 3px;
+        }
+
+        /* ---------- CTA BANNER (GOLD) ---------- */
+        .cta-banner {
+            background: linear-gradient(135deg, #d4af37, #b8962e);
+            padding: 50px 0;
+        }
+
+        .cta-banner .cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .cta-banner .cta-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: #0a0808;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .cta-banner .cta-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            color: rgba(10, 8, 8, 0.6);
+        }
+        .cta-banner .cta-content .btn-cta {
+            background: #0a0808;
+            border: none;
+            color: #d4af37;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .cta-banner .cta-content .btn-cta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ---------- CONTACT (LUXURY) ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #0a0808;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+            background: #0a0808;
+            padding: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 8px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .contact-info h3 span {
+            color: #d4af37;
+        }
+        .contact-info p {
+            font-family: 'Cormorant Garamond', serif;
+            color: #665544;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+            font-size: 17px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            color: #998877;
+        }
+        .contact-info .detail .emoji {
+            color: #d4af37;
+            font-size: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 20px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            border-radius: 30px;
+            background: #0a0808;
+            color: #e8ddd0;
+            font-size: 14px;
+            transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: rgba(212, 175, 55, 0.04);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.01);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+            border-radius: 20px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37, #b8962e);
+            border: none;
+            color: #0a0808;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.04);
+        }
+        #form-message {
+            margin-top: 14px;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 14px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* ---------- FOOTER (LUXURY) ---------- */
+        footer {
+            background: #060505;
+            padding: 50px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.02);
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 20%;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.04), transparent);
+        }
+
+        footer .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        footer .footer-logo span {
+            color: #d4af37;
+        }
+
+        footer .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.04);
+            margin: 16px auto;
+        }
+
+        footer .designer {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+        footer .void-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            color: #665544;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 4px;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a {
+            font-family: 'Cormorant Garamond', serif;
+            color: #665544;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        footer .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        footer .footer-copy {
+            font-family: 'Cormorant Garamond', serif;
+            color: #443322;
+            font-size: 12px;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .collection-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .cta-banner .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 12px;
+            }
+            nav a {
+                padding: 6px 16px;
+                font-size: 14px;
+            }
+            .collection-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+            .logo {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+            .collection-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .collection-item {
+                padding: 20px 16px;
+            }
+            .collection-item .icon {
+                font-size: 32px;
+            }
+            .collection-item h4 {
+                font-size: 15px;
+            }
+            .collection-item .price {
+                font-size: 18px;
+            }
+            .cta-banner .cta-content h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER (LOGO MIDDLE) ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                Luxe<span>Gems</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="#" class="active">Home</a>
+                    <a href="#">Collections</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </nav>
+                <button class="btn-outline">Book Appointment</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">✦ Timeless Elegance</div>
+                <h1>Discover <span>Brilliance</span></h1>
+                <p>Each gem tells a story. Explore our curated collection of the finest jewelry, crafted with passion.</p>
+                <button class="btn-primary" onclick="showAlert()">Explore Collection</button>
+            </div>
+            <div class="hero-image">
+                <img src="luxegems.jpg" alt="LuxeGems Jewelry" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY SECTION ========== -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our <span>Collections</span></h2>
+                <div class="subtitle">✦ Masterpieces crafted with precision ✦</div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="jewel1.jpg" alt="Diamond Collection" />
+                    <div class="info">
+                        <h4>Diamond Collection</h4>
+                        <p>Exceptional clarity & brilliance</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jewel2.jpg" alt="Gold Collection" />
+                    <div class="info">
+                        <h4>Gold Collection</h4>
+                        <p>18K luxury pieces</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jewel3.jpg" alt="Gemstone Collection" />
+                    <div class="info">
+                        <h4>Gemstone Collection</h4>
+                        <p>Sapphires, rubies & emeralds</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jewel4.jpg" alt="Bespoke Collection" />
+                    <div class="info">
+                        <h4>Bespoke Collection</h4>
+                        <p>Custom designs for you</p>
+                        <div class="gold-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== JEWELRY COLLECTION ========== -->
+    <section class="collection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured <span>Pieces</span></h2>
+                <div class="subtitle">✦ Our most exquisite creations ✦</div>
+            </div>
+            <div class="collection-grid">
+                <div class="collection-item">
+                    <span class="icon">💎</span>
+                    <h4>Diamond Ring</h4>
+                    <div class="desc">4.5 carat, VVS1 clarity</div>
+                    <div class="price">$12,500</div>
+                    <span class="sticker">Bestseller</span>
+                </div>
+                <div class="collection-item">
+                    <span class="icon">✨</span>
+                    <h4>Gold Necklace</h4>
+                    <div class="desc">18K gold, sapphire pendant</div>
+                    <div class="price">$8,200</div>
+                    <span class="sticker">⭐ Premium</span>
+                </div>
+                <div class="collection-item">
+                    <span class="icon">👑</span>
+                    <h4>Emerald Earrings</h4>
+                    <div class="desc">Colombian emeralds, platinum</div>
+                    <div class="price">$15,800</div>
+                    <span class="sticker">✦ Exclusive</span>
+                </div>
+                <div class="collection-item">
+                    <span class="icon">🌟</span>
+                    <h4>Ruby Bracelet</h4>
+                    <div class="desc">Burmese rubies, white gold</div>
+                    <div class="price">$9,400</div>
+                    <span class="sticker">👑 Limited</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client <span>Testimonials</span></h2>
+                <div class="subtitle">✦ What our clients say ✦</div>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">Exquisite craftsmanship. The diamond ring exceeded all expectations.</div>
+                    <div class="author">
+                        <div class="avatar">JD</div>
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">Collector</div>
+                        </div>
+                    </div>
+                    <div class="rating">✦ ✦ ✦ ✦ ✦</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">LuxeGems is the pinnacle of luxury jewelry. Absolutely stunning pieces.</div>
+                    <div class="author">
+                        <div class="avatar">SM</div>
+                        <div>
+                            <div class="name">Sarah Miller</div>
+                            <div class="role">Jewelry Connoisseur</div>
+                        </div>
+                    </div>
+                    <div class="rating">✦ ✦ ✦ ✦ ✦</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">The bespoke service is incredible. They brought my vision to life.</div>
+                    <div class="author">
+                        <div class="avatar">AK</div>
+                        <div>
+                            <div class="name">Alex Kim</div>
+                            <div class="role">CEO, LuxeCorp</div>
+                        </div>
+                    </div>
+                    <div class="rating">✦ ✦ ✦ ✦ ✦</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <h3>Discover <span style="color:#0a0808;">Elegance</span></h3>
+                    <p>Book a private viewing</p>
+                </div>
+                <button class="btn-cta" onclick="showAlert()">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Schedule a <span>Consultation</span></h3>
+                    <p>Let us help you find the perfect piece.</p>
+                    <div class="detail"><span class="emoji">✉</span> hello@luxegems.com</div>
+                    <div class="detail"><span class="emoji">📞</span> +1 800 555 0808</div>
+                    <div class="detail"><span class="emoji">📍</span> Luxury District, NYC</div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <input type="text" id="interest" placeholder="What are you looking for?" />
+                    <input type="text" id="budget" placeholder="Budget Range" />
+                    <button onclick="submitForm()">Send Request</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                Luxe<span>Gems</span>
+            </div>
+            <div class="footer-divider"></div>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Careers</a>
+                <a href="#">Press</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 LuxeGems. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('✦ Explore elegance at luxegems.com/collection');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const interest = document.getElementById('interest').value.trim();
+            const budget = document.getElementById('budget').value.trim();
+
+            if (!name || !email || !interest || !budget) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Thank you! Our consultant will contact you shortly.';
+            document.getElementById('form-message').style.color = '#d4af37';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('interest').value = '';
+            document.getElementById('budget').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Interest:', interest);
+            console.log('Budget:', budget);
+        }
+    </script>
+
+</body>
+</html>

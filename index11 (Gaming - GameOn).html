@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameOn - Next Gen Gaming | THE VOID</title>
+    <!-- فونت اختصاصی بازی: Rajdhani + Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a080e;
+            color: #e8e0f0;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER (شیشه‌ای با برش) ---------- */
+        header {
+            background: rgba(10, 8, 14, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 88%);
+            margin-bottom: -20px;
+            border-bottom: 1px solid rgba(150, 50, 255, 0.08);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 30px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo .void {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 9px;
+            color: #445;
+            font-weight: 400;
+            letter-spacing: 4px;
+            display: block;
+            margin-top: -2px;
+            -webkit-text-fill-color: #445;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #8899aa;
+            text-decoration: none;
+            padding: 8px 20px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: rgba(168, 85, 247, 0.08);
+            color: #a855f7;
+        }
+        nav a.active {
+            background: rgba(168, 85, 247, 0.12);
+            color: #a855f7;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #a855f7;
+            color: #a855f7;
+            padding: 10px 28px;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #a855f7;
+            color: #0a080e;
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.15);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 40px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,0 C300,100 600,20 900,80 C1050,110 1150,60 1200,40 L1200,120 L0,120 Z' fill='%23100b16'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(168, 85, 247, 0.08);
+            color: #a855f7;
+            padding: 6px 20px 6px 16px;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(168, 85, 247, 0.08);
+            margin-bottom: 20px;
+        }
+        .hero-text .badge .dot {
+            width: 6px;
+            height: 6px;
+            background: #a855f7;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        .hero-text h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 58px;
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            color: #8899aa;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.08);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 80px rgba(168, 85, 247, 0.15);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+        .hero-image .glow-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.04), transparent 70%);
+            pointer-events: none;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(168, 85, 247, 0.04);
+        }
+
+        /* ---------- LINE CHART SECTION (نمودار خط شکسته) ---------- */
+        .chart-section {
+            padding: 80px 0 60px;
+            background: #100b16;
+            position: relative;
+        }
+
+        .chart-section .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .chart-section .section-header h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .chart-section .section-header h2 span {
+            color: #a855f7;
+        }
+        .chart-section .section-header p {
+            color: #667;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .chart-wrapper {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .chart-visual {
+            background: #0a080e;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(168, 85, 247, 0.04);
+            position: relative;
+        }
+
+        .chart-visual .chart-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #8899aa;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* نمودار خط شکسته با SVG */
+        .line-chart-svg {
+            width: 100%;
+            height: 200px;
+        }
+
+        .line-chart-svg .chart-line {
+            stroke: #a855f7;
+            stroke-width: 3;
+            fill: none;
+            filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.15));
+        }
+
+        .line-chart-svg .chart-area {
+            fill: url(#areaGradient);
+            opacity: 0.15;
+        }
+
+        .line-chart-svg .chart-dot {
+            fill: #a855f7;
+            stroke: #0a080e;
+            stroke-width: 3;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .line-chart-svg .chart-dot:hover {
+            fill: #fff;
+            stroke: #a855f7;
+            stroke-width: 4;
+            r: 8;
+        }
+
+        .line-chart-svg .chart-label {
+            fill: #667;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        .line-chart-svg .chart-value {
+            fill: #a855f7;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-anchor: middle;
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .line-chart-svg .chart-dot:hover + .chart-value,
+        .line-chart-svg .chart-dot:hover ~ .chart-value {
+            opacity: 1;
+        }
+
+        .chart-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .chart-stat-item {
+            background: #0a080e;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+        .chart-stat-item .number {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: #a855f7;
+        }
+        .chart-stat-item .label {
+            font-size: 12px;
+            color: #667;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* ---------- GAME GRID (4 کارت بازی) ---------- */
+        .games {
+            padding: 80px 0;
+            background: #0a080e;
+        }
+
+        .games .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .games .section-header h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .games .section-header h2 span {
+            color: #a855f7;
+        }
+        .games .section-header p {
+            color: #667;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .game-item {
+            background: #100b16;
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid rgba(168, 85, 247, 0.04);
+            transition: 0.5s;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .game-item .sticker {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(168, 85, 247, 0.12);
+            color: #a855f7;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(168, 85, 247, 0.04);
+        }
+        .game-item .sticker.hot {
+            background: #a855f7;
+            color: #0a080e;
+        }
+        .game-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.12);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        .game-item .icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .game-item h4 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .game-item .players {
+            font-size: 13px;
+            color: #8899aa;
+            margin-top: 4px;
+        }
+        .game-item .rating {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- TESTIMONIAL (کارت عمودی) ---------- */
+        .testimonials {
+            padding: 80px 0;
+            background: #100b16;
+        }
+
+        .testimonials .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .testimonials .section-header h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .testimonials .section-header h2 span {
+            color: #a855f7;
+        }
+        .testimonials .section-header p {
+            color: #667;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #0a080e;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(168, 85, 247, 0.04);
+            transition: 0.4s;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(168, 85, 247, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .testimonial-card .quote {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #aabbcc;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .testimonial-card .quote::before {
+            content: '"';
+            color: #a855f7;
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.5;
+        }
+        .testimonial-card .quote::after {
+            content: '"';
+            color: #a855f7;
+            font-size: 28px;
+            font-weight: 700;
+            opacity: 0.5;
+        }
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-card .author .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+        }
+        .testimonial-card .author .name {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .testimonial-card .author .role {
+            font-size: 12px;
+            color: #667;
+        }
+        .testimonial-card .rating {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- CTA BANNER ---------- */
+        .cta-banner {
+            background: linear-gradient(135deg, #100b16, #1a1225);
+            padding: 60px 0;
+            border-top: 1px solid rgba(168, 85, 247, 0.04);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.04);
+        }
+
+        .cta-banner .cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .cta-banner .cta-content h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cta-banner .cta-content h3 span {
+            color: #a855f7;
+        }
+        .cta-banner .cta-content p {
+            color: #8899aa;
+        }
+        .cta-banner .cta-content .btn-cta {
+            background: transparent;
+            border: 1.5px solid #a855f7;
+            color: #a855f7;
+            padding: 14px 40px;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cta-banner .cta-content .btn-cta:hover {
+            background: #a855f7;
+            color: #0a080e;
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.15);
+        }
+
+        /* ---------- CONTACT ---------- */
+        .contact {
+            padding: 70px 0 50px;
+            background: #0a080e;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+            background: #100b16;
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid rgba(168, 85, 247, 0.04);
+        }
+
+        .contact-info h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .contact-info h3 span {
+            color: #a855f7;
+        }
+        .contact-info p {
+            color: #667;
+            line-height: 1.8;
+            margin: 12px 0 24px;
+            font-size: 14px;
+        }
+        .contact-info .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #8899aa;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            background: #0a080e;
+            color: #e8e0f0;
+            font-size: 14px;
+            transition: 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #a855f7;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.03);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            border: none;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.12);
+        }
+        #form-message {
+            margin-top: 14px;
+            color: #a855f7;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: #05040a;
+            padding: 40px 0;
+            text-align: center;
+            color: #445;
+            font-size: 13px;
+            border-top: 1px solid rgba(168, 85, 247, 0.02);
+        }
+        footer .designer {
+            color: #a855f7;
+            font-weight: 600;
+        }
+        footer .void-brand {
+            color: #334;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        footer .footer-links a {
+            color: #556;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        footer .footer-links a:hover {
+            color: #a855f7;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .chart-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .cta-banner .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 34px;
+            }
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            nav a {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+            .game-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .chart-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-wrapper {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+            .game-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .chart-stat-item .number {
+                font-size: 24px;
+            }
+            .cta-banner .cta-content h3 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER (Clipped) ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                Game<span>On</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Games</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Play Now</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">
+                    <span class="dot"></span>
+                    Next Gen Gaming
+                </div>
+                <h1>Level Up <span>Your Reality</span></h1>
+                <p>Immerse yourself in the future of gaming. Stunning graphics, epic stories, and endless adventures.</p>
+                <button class="btn-primary" onclick="showAlert()">Join The Battle</button>
+            </div>
+            <div class="hero-image">
+                <div class="glow-ring"></div>
+                <img src="gameon.jpg" alt="GameOn" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LINE CHART SECTION (نمودار خط شکسته) ========== -->
+    <section class="chart-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live <span>Players</span></h2>
+                <p>Active users over the last 7 days</p>
+            </div>
+            <div class="chart-wrapper">
+                <div class="chart-visual">
+                    <div class="chart-title">📈 Daily Active Players</div>
+                    <svg class="line-chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Area fill -->
+                        <polygon class="chart-area" points="0,170 50,120 120,150 200,90 280,130 360,60 440,110 520,40 600,80 600,200 0,200" />
+                        <!-- Line -->
+                        <polyline class="chart-line" points="0,170 50,120 120,150 200,90 280,130 360,60 440,110 520,40 600,80" />
+                        <!-- Dots + Labels -->
+                        <circle class="chart-dot" cx="0" cy="170" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="0" y="155">170</text>
+                        <text class="chart-label" x="0" y="192">Mon</text>
+
+                        <circle class="chart-dot" cx="50" cy="120" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="50" y="105">120</text>
+                        <text class="chart-label" x="50" y="192">Tue</text>
+
+                        <circle class="chart-dot" cx="120" cy="150" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="120" y="135">150</text>
+                        <text class="chart-label" x="120" y="192">Wed</text>
+
+                        <circle class="chart-dot" cx="200" cy="90" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="200" y="75">90</text>
+                        <text class="chart-label" x="200" y="192">Thu</text>
+
+                        <circle class="chart-dot" cx="280" cy="130" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="280" y="115">130</text>
+                        <text class="chart-label" x="280" y="192">Fri</text>
+
+                        <circle class="chart-dot" cx="360" cy="60" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="360" y="45">60</text>
+                        <text class="chart-label" x="360" y="192">Sat</text>
+
+                        <circle class="chart-dot" cx="440" cy="110" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="440" y="95">110</text>
+                        <text class="chart-label" x="440" y="192">Sun</text>
+
+                        <circle class="chart-dot" cx="520" cy="40" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="520" y="25">40</text>
+                        <text class="chart-label" x="520" y="192">Mon</text>
+
+                        <circle class="chart-dot" cx="600" cy="80" r="6">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text class="chart-value" x="600" y="65">80</text>
+                        <text class="chart-label" x="600" y="192">Tue</text>
+                    </svg>
+                </div>
+                <div class="chart-stats">
+                    <div class="chart-stat-item">
+                        <div class="number">2.4M</div>
+                        <div class="label">Total Players</div>
+                    </div>
+                    <div class="chart-stat-item">
+                        <div class="number">850K</div>
+                        <div class="label">Active Daily</div>
+                    </div>
+                    <div class="chart-stat-item">
+                        <div class="number">4.8⭐</div>
+                        <div class="label">Avg Rating</div>
+                    </div>
+                    <div class="chart-stat-item">
+                        <div class="number">50+</div>
+                        <div class="label">Countries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GAME GRID ========== -->
+    <section class="games">
+        <div class="container">
+            <div class="section-header">
+                <h2>Top <span>Games</span></h2>
+                <p>Most played this month</p>
+            </div>
+            <div class="game-grid">
+                <div class="game-item">
+                    <span class="sticker hot">🔥 Hot</span>
+                    <span class="icon">⚔️</span>
+                    <h4>Battle Arena</h4>
+                    <div class="players">2.1M players</div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="game-item">
+                    <span class="sticker">🎮</span>
+                    <span class="icon">🏎️</span>
+                    <h4>Turbo Racing</h4>
+                    <div class="players">1.8M players</div>
+                    <div class="rating">★★★★☆</div>
+                </div>
+                <div class="game-item">
+                    <span class="sticker">🏆</span>
+                    <span class="icon">🧙</span>
+                    <h4>Mystic Quest</h4>
+                    <div class="players">1.2M players</div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="game-item">
+                    <span class="sticker">⭐</span>
+                    <span class="icon">🔫</span>
+                    <h4>Cyber Strike</h4>
+                    <div class="players">980K players</div>
+                    <div class="rating">★★★★☆</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Gamer <span>Reviews</span></h2>
+                <p>What our community says</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">Best gaming platform ever. The graphics and gameplay are incredible.</div>
+                    <div class="author">
+                        <div class="avatar">JD</div>
+                        <div>
+                            <div class="name">John Doe</div>
+                            <div class="role">Pro Gamer</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">I've been gaming for 20 years and this is the best community I've found.</div>
+                    <div class="author">
+                        <div class="avatar">SM</div>
+                        <div>
+                            <div class="name">Sarah Miller</div>
+                            <div class="role">Game Streamer</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">The new update is insane. GameOn keeps getting better every month.</div>
+                    <div class="author">
+                        <div class="avatar">AK</div>
+                        <div>
+                            <div class="name">Alex Kim</div>
+                            <div class="role">Game Developer</div>
+                        </div>
+                    </div>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA BANNER ========== -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <div>
+                    <h3>Ready to <span>Play</span>?</h3>
+                    <p>Join millions of gamers worldwide</p>
+                </div>
+                <button class="btn-cta" onclick="showAlert()">Download Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get <span>Support</span></h3>
+                    <p>Have questions? We're here to help you 24/7.</p>
+                    <div class="detail">📧 support@gameon.com</div>
+                    <div class="detail">📞 +1 800 555 0505</div>
+                    <div class="detail">📍 Global — 24/7 Support</div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" id="name" placeholder="Full Name" />
+                    <input type="email" id="email" placeholder="Email Address" />
+                    <input type="text" id="game" placeholder="Your Favorite Game" />
+                    <textarea id="message" placeholder="Tell us what you need..."></textarea>
+                    <button onclick="submitForm()">Send Message 🎮</button>
+                    <p id="form-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 GameOn. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Community</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('🎮 Join the battle at gameon.com/download');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const game = document.getElementById('game').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !game || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Thanks! We\'ll get back to you within 24 hours.';
+            document.getElementById('form-message').style.color = '#a855f7';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('game').value = '';
+            document.getElementById('message').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Game:', game);
+            console.log('Message:', message);
+        }
+    </script>
+
+</body>
+</html>

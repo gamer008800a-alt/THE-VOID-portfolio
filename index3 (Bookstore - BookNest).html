@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookNest - Bookstore | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8f6f0;
+            color: #2c2418;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            background: #ffffff;
+            padding: 18px 0;
+            border-bottom: 3px solid #8b6b4d;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #2c2418;
+        }
+        .logo span {
+            color: #8b6b4d;
+        }
+        .logo .void {
+            font-size: 14px;
+            color: #999;
+            font-weight: 400;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: -4px;
+        }
+
+        nav a {
+            color: #555;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #8b6b4d;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #8b6b4d;
+            color: #8b6b4d;
+            padding: 8px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background: #8b6b4d;
+            color: #fff;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #f8f6f0, #ffffff);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .badge {
+            background: #8b6b4d;
+            color: #fff;
+            display: inline-block;
+            padding: 4px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #2c2418;
+        }
+        .hero-text h1 span {
+            color: #8b6b4d;
+        }
+
+        .hero-text p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 500px;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            background: #8b6b4d;
+            border: none;
+            color: #fff;
+            padding: 16px 44px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 30px rgba(139, 107, 77, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(139, 107, 77, 0.6);
+            background: #6d4f38;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #8b6b4d;
+            box-shadow: 0 30px 60px rgba(139, 107, 77, 0.15);
+        }
+
+        /* ---------- BENEFITS ---------- */
+        .benefits {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .benefits h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #2c2418;
+            margin-bottom: 8px;
+        }
+        .benefits h2 span {
+            color: #8b6b4d;
+        }
+        .benefits .subtitle {
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .benefit-item {
+            background: #ffffff;
+            padding: 36px 24px;
+            border-radius: 20px;
+            flex: 1 1 220px;
+            border: 1px solid #e8e0d6;
+            transition: 0.3s;
+        }
+        .benefit-item:hover {
+            border-color: #8b6b4d;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+        .benefit-item .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        .benefit-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2c2418;
+        }
+        .benefit-item p {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ---------- TESTIMONIAL ---------- */
+        .testimonial {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 40px;
+            margin: 20px 0 50px;
+            border-left: 6px solid #8b6b4d;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .testimonial blockquote {
+            font-size: 22px;
+            font-style: italic;
+            color: #333;
+            max-width: 750px;
+            margin: 0 auto 16px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .testimonial .author {
+            text-align: center;
+            font-weight: 700;
+            color: #8b6b4d;
+            font-size: 18px;
+        }
+
+        /* ---------- CONTACT ---------- */
+        .contact {
+            padding: 60px 0 50px;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 34px;
+            font-weight: 900;
+            color: #2c2418;
+        }
+        .contact h2 span {
+            color: #8b6b4d;
+        }
+        .contact .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 36px;
+        }
+
+        .contact-form {
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            border: 1px solid #e8e0d6;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #2c2418;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #8b6b4d;
+            box-shadow: 0 0 0 3px rgba(139, 107, 77, 0.1);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 17px;
+            background: #8b6b4d;
+            border: none;
+            color: #fff;
+            font-weight: 800;
+            font-size: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background: #6d4f38;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 107, 77, 0.3);
+        }
+
+        #form-message {
+            text-align: center;
+            margin-top: 18px;
+            color: #8b6b4d;
+            font-weight: 700;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            border-top: 1px solid #e8e0d6;
+            padding: 35px 0;
+            margin-top: 30px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        footer .designer {
+            color: #8b6b4d;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        footer .void-brand {
+            color: #bbb;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                margin: 0 14px;
+                font-size: 13px;
+            }
+            .hero-grid {
+                flex-direction: column-reverse;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 26px;
+            }
+            .logo {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                Book<span>Nest</span>
+                <span class="void">✦ THE VOID</span>
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Books</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+            <button class="btn-outline">Browse</button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <div class="badge">📚 New Arrivals</div>
+                <h1>Discover Your Next <span>Adventure</span></h1>
+                <p>Curated collection of fiction, non-fiction, and rare finds. Every book tells a story waiting for you.</p>
+                <button class="btn-primary" onclick="showAlert()">Explore Books</button>
+            </div>
+            <div class="hero-image">
+                <!-- Download a bookstore image from Pexels and name it 'booknest.jpg' -->
+                <img src="booknest.jpg" alt="BookNest Bookstore" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BENEFITS ========== -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Why <span>BookNest</span>?</h2>
+            <p class="subtitle">For the love of reading</p>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="icon">📖</div>
+                    <h3>Curated Selection</h3>
+                    <p>Handpicked books from around the world. Quality over quantity.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🚚</div>
+                    <h3>Free Shipping</h3>
+                    <p>On orders over $50. Your books delivered with care.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🎁</div>
+                    <h3>Signed Editions</h3>
+                    <p>Exclusive signed copies from your favorite authors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIAL ========== -->
+    <div class="container">
+        <div class="testimonial">
+            <blockquote>
+                “BookNest is my happy place. I've discovered so many amazing books through their recommendations.”
+            </blockquote>
+            <p class="author">— James R., Avid Reader</p>
+        </div>
+    </div>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact-section">
+        <div class="container">
+            <h2>📩 Join Our <span>Reading Club</span></h2>
+            <p class="subtitle">Get monthly book recommendations and exclusive offers</p>
+            <div class="contact-form">
+                <input type="text" id="name" placeholder="Full Name" />
+                <input type="email" id="email" placeholder="Email Address" />
+                <input type="text" id="genre" placeholder="Favorite Genre (e.g. Fiction, Sci-Fi)" />
+                <button onclick="submitForm()">Subscribe 📚</button>
+            </div>
+            <p id="form-message"></p>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BookNest. All rights reserved.</p>
+            <p>
+                Designed by <span class="designer">Amir Abbas Abachi</span>
+                <span class="void-brand">✦ THE VOID ✦</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        function showAlert() {
+            alert('📚 Visit our store at booknest.com/explore');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const genre = document.getElementById('genre').value.trim();
+
+            if (!name || !email || !genre) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            document.getElementById('form-message').innerHTML = '✅ Welcome to the club! Check your email for our next newsletter.';
+            document.getElementById('form-message').style.color = '#8b6b4d';
+
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('genre').value = '';
+
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Genre:', genre);
+        }
+    </script>
+
+</body>
+</html>
